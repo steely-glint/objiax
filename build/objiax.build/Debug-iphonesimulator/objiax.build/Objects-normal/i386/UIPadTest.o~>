@@ -1,0 +1,6 @@
+/project2/softphone/objiax/UIPadTest.m:13: error: no declaration of property 'nsr' found in the interface
+/project2/softphone/objiax/UIPadTest.m: In function '-[UIPadTest viewDidLoad]':
+/project2/softphone/objiax/UIPadTest.m:28: error: 'nsr' undeclared (first use in this function)
+/project2/softphone/objiax/UIPadTest.m:28: error: (Each undeclared identifier is reported only once
+/project2/softphone/objiax/UIPadTest.m:28: error: for each function it appears in.)
+/project2/softphone/objiax/UIPadTest.m:28: error: 'NetSockRunner' undeclared (first use in this function)
