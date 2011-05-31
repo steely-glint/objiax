@@ -61,7 +61,6 @@
         //call = [nsr newCall:@"android" pass:@"marvin" exten:@"2000" statusListener:self];
         call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" statusListener:self];
         //[nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
-        //[nsr newCall:@"voxeoc" pass:@"srtp" exten:@"0018002922393" statusListener:self];
 
 
         [botBut setTitle:@"Hangup" forState:UIControlStateNormal];

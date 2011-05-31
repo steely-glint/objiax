@@ -24,10 +24,6 @@
 		221BEDF1137B073000AFB367 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221BEDF0137B073000AFB367 /* MainView.xib */; };
 		221BEDF4137B073000AFB367 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221BEDF3137B073000AFB367 /* FlipsideViewController.m */; };
 		221BEDF6137B073000AFB367 /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221BEDF5137B073000AFB367 /* FlipsideView.xib */; };
-		221BEDFA137B07DC00AFB367 /* libobjiax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libobjiax.a */; };
-		2231D4341142053600C5F2AB /* IAXFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 2231D4331142053600C5F2AB /* IAXFrame.h */; };
-		2231D4881143646000C5F2AB /* IAXFrameOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 2231D4861143646000C5F2AB /* IAXFrameOut.h */; };
-		2231D4891143646000C5F2AB /* IAXFrameOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231D4871143646000C5F2AB /* IAXFrameOut.m */; };
 		223A221B13812125000B2166 /* add.c in Sources */ = {isa = PBXBuildFile; fileRef = 223A220413812125000B2166 /* add.c */; };
 		223A221C13812125000B2166 /* code.c in Sources */ = {isa = PBXBuildFile; fileRef = 223A220613812125000B2166 /* code.c */; };
 		223A221D13812125000B2166 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 223A220713812125000B2166 /* config.h */; };
@@ -52,11 +48,9 @@
 		223A2238138125A8000B2166 /* UlawCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 223A2236138125A8000B2166 /* UlawCodec.m */; };
 		223A224413813491000B2166 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224313813491000B2166 /* CoreAudio.framework */; };
 		223A2246138134AB000B2166 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A2245138134AB000B2166 /* AudioToolbox.framework */; };
-		223A224813814F6F000B2166 /* libiosaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A65E00137ED1F600FB4644 /* libiosaudio.a */; };
 		223A224B13815297000B2166 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224913815297000B2166 /* AudioToolbox.framework */; };
 		223A224E13815306000B2166 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224D13815306000B2166 /* CoreAudio.framework */; };
-		2257CDCC115E508400E030A5 /* IEData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2257CDCA115E508400E030A5 /* IEData.h */; };
-		2257CDCD115E508400E030A5 /* IEData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257CDCB115E508400E030A5 /* IEData.m */; };
+		223A862413952DEE002E4E90 /* libPfhObjIAX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E64EE013952D4700196D29 /* libPfhObjIAX.a */; };
 		22A65E01137ED1F600FB4644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		22A65E09137ED25D00FB4644 /* AudioDataConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E08137ED25D00FB4644 /* AudioDataConsumer.h */; };
 		22A65E60137ED67C00FB4644 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E0C137ED67C00FB4644 /* _kiss_fft_guts.h */; };
@@ -149,32 +143,20 @@
 		22A65EBD137EE0D800FB4644 /* PfhAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65EBB137EE0D800FB4644 /* PfhAudio.h */; };
 		22A65EBE137EE0D800FB4644 /* PfhAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A65EBC137EE0D800FB4644 /* PfhAudio.m */; };
 		22C4AA5F138682A1005C1E19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C4AA5E138682A1005C1E19 /* Security.framework */; };
-		22CBA1F6113A3A8C00D4972E /* IAXCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CBA1F4113A3A8C00D4972E /* IAXCall.h */; };
-		22CBA1F7113A3A8C00D4972E /* IAXCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA1F5113A3A8C00D4972E /* IAXCall.m */; };
-		22CBA210113A3BFE00D4972E /* NetSockRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CBA20E113A3BFD00D4972E /* NetSockRunner.h */; };
-		22CBA211113A3BFE00D4972E /* NetSockRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA20F113A3BFD00D4972E /* NetSockRunner.m */; };
-		22CBA216113A3C4A00D4972E /* IAXFrameIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CBA214113A3C4A00D4972E /* IAXFrameIn.h */; };
-		22CBA217113A3C4A00D4972E /* IAXFrameIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA215113A3C4A00D4972E /* IAXFrameIn.m */; };
-		AA747D9F0F9514B9006C5449 /* objiax_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* objiax_Prefix.pch */; };
-		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		22E64EE113952D4800196D29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		22E64EEA13952D6200196D29 /* IEData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257CDCB115E508400E030A5 /* IEData.m */; };
+		22E64EEB13952D6200196D29 /* IAXCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA1F5113A3A8C00D4972E /* IAXCall.m */; };
+		22E64EEC13952D6200196D29 /* Phonefromhere.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA20F113A3BFD00D4972E /* Phonefromhere.m */; };
+		22E64EED13952D6200196D29 /* IAXFrameIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA215113A3C4A00D4972E /* IAXFrameIn.m */; };
+		22E64EEE13952D6200196D29 /* IAXFrameOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231D4871143646000C5F2AB /* IAXFrameOut.m */; };
+		22E64EEF13952D6C00196D29 /* libiosaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A65E00137ED1F600FB4644 /* libiosaudio.a */; };
+		22E64EF013952D7F00196D29 /* IAXCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CBA1F4113A3A8C00D4972E /* IAXCall.h */; };
+		22E64EF113952D7F00196D29 /* Phonefromhere.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CBA20E113A3BFD00D4972E /* Phonefromhere.h */; };
+		22E64EF213952D7F00196D29 /* IAXFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 2231D4331142053600C5F2AB /* IAXFrame.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		223A21EE13811FB1000B2166 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22A65DFF137ED1F600FB4644;
-			remoteInfo = iosaudio;
-		};
-		223A21F013811FCC000B2166 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = objiax;
-		};
-		223A21F213811FD2000B2166 /* PBXContainerItemProxy */ = {
+		22E64EE813952D5100196D29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -260,6 +242,7 @@
 		223E2C52137AFF3600A983F3 /* ProtocolTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProtocolTestTests.m; sourceTree = "<group>"; };
 		2257CDCA115E508400E030A5 /* IEData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEData.h; sourceTree = "<group>"; };
 		2257CDCB115E508400E030A5 /* IEData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IEData.m; sourceTree = "<group>"; };
+		228AECED13951A92008FCE71 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		22A65E00137ED1F600FB4644 /* libiosaudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiosaudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A65E04137ED1F600FB4644 /* iosaudio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iosaudio-Prefix.pch"; sourceTree = "<group>"; };
 		22A65E08137ED25D00FB4644 /* AudioDataConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDataConsumer.h; sourceTree = "<group>"; };
@@ -355,13 +338,15 @@
 		22C4AA5E138682A1005C1E19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22CBA1F4113A3A8C00D4972E /* IAXCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAXCall.h; sourceTree = "<group>"; };
 		22CBA1F5113A3A8C00D4972E /* IAXCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAXCall.m; sourceTree = "<group>"; };
-		22CBA20E113A3BFD00D4972E /* NetSockRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSockRunner.h; sourceTree = "<group>"; };
-		22CBA20F113A3BFD00D4972E /* NetSockRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetSockRunner.m; sourceTree = "<group>"; };
+		22CBA20E113A3BFD00D4972E /* Phonefromhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phonefromhere.h; sourceTree = "<group>"; };
+		22CBA20F113A3BFD00D4972E /* Phonefromhere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phonefromhere.m; sourceTree = "<group>"; };
 		22CBA214113A3C4A00D4972E /* IAXFrameIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAXFrameIn.h; sourceTree = "<group>"; };
 		22CBA215113A3C4A00D4972E /* IAXFrameIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAXFrameIn.m; sourceTree = "<group>"; };
+		22E11616139521B30094E9AE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		22E64EE013952D4700196D29 /* libPfhObjIAX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPfhObjIAX.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E64EE413952D4800196D29 /* PfhObjIAX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PfhObjIAX-Prefix.pch"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* objiax_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objiax_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libobjiax.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libobjiax.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,13 +354,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223A862413952DEE002E4E90 /* libPfhObjIAX.a in Frameworks */,
 				22C4AA5F138682A1005C1E19 /* Security.framework in Frameworks */,
 				223A224E13815306000B2166 /* CoreAudio.framework in Frameworks */,
 				223A224B13815297000B2166 /* AudioToolbox.framework in Frameworks */,
 				221BEDDB137B072F00AFB367 /* UIKit.framework in Frameworks */,
 				221BEDDC137B072F00AFB367 /* Foundation.framework in Frameworks */,
 				221BEDDD137B072F00AFB367 /* CoreGraphics.framework in Frameworks */,
-				221BEDFA137B07DC00AFB367 /* libobjiax.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,12 +374,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2AAC07C0554694100DB518D /* Frameworks */ = {
+		22E64EDD13952D4700196D29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223A224813814F6F000B2166 /* libiosaudio.a in Frameworks */,
-				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				22E64EEF13952D6C00196D29 /* libiosaudio.a in Frameworks */,
+				22E64EE113952D4800196D29 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +389,6 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC07E0554694100DB518D /* libobjiax.a */,
 				221BEDD9137B072F00AFB367 /* VUCCaller.app */,
 			);
 			name = Products;
@@ -413,11 +397,13 @@
 		0867D691FE84028FC02AAC07 /* objiax */ = {
 			isa = PBXGroup;
 			children = (
+				22E64EE013952D4700196D29 /* libPfhObjIAX.a */,
+				22A65E00137ED1F600FB4644 /* libiosaudio.a */,
+				22E11616139521B30094E9AE /* CoreFoundation.framework */,
 				22C4AA5E138682A1005C1E19 /* Security.framework */,
 				223A224D13815306000B2166 /* CoreAudio.framework */,
 				223A224913815297000B2166 /* AudioToolbox.framework */,
 				223A224A13815297000B2166 /* AudioUnit.framework */,
-				22A65E00137ED1F600FB4644 /* libiosaudio.a */,
 				223A2245138134AB000B2166 /* AudioToolbox.framework */,
 				223A224313813491000B2166 /* CoreAudio.framework */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -425,6 +411,7 @@
 				223E2C49137AFF3500A983F3 /* ProtocolTestTests */,
 				221BEDDE137B072F00AFB367 /* VUCCaller */,
 				22A65E02137ED1F600FB4644 /* iosaudio */,
+				22E64EE213952D4800196D29 /* PfhObjIAX */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -437,6 +424,7 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				223E2C24137AFF3500A983F3 /* UIKit.framework */,
 				223E2C27137AFF3500A983F3 /* CoreGraphics.framework */,
+				228AECED13951A92008FCE71 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,8 +436,8 @@
 				2257CDCB115E508400E030A5 /* IEData.m */,
 				22CBA1F4113A3A8C00D4972E /* IAXCall.h */,
 				22CBA1F5113A3A8C00D4972E /* IAXCall.m */,
-				22CBA20E113A3BFD00D4972E /* NetSockRunner.h */,
-				22CBA20F113A3BFD00D4972E /* NetSockRunner.m */,
+				22CBA20E113A3BFD00D4972E /* Phonefromhere.h */,
+				22CBA20F113A3BFD00D4972E /* Phonefromhere.m */,
 				22CBA214113A3C4A00D4972E /* IAXFrameIn.h */,
 				22CBA215113A3C4A00D4972E /* IAXFrameIn.m */,
 				2231D4331142053600C5F2AB /* IAXFrame.h */,
@@ -706,6 +694,22 @@
 			path = g722;
 			sourceTree = "<group>";
 		};
+		22E64EE213952D4800196D29 /* PfhObjIAX */ = {
+			isa = PBXGroup;
+			children = (
+				22E64EE313952D4800196D29 /* Supporting Files */,
+			);
+			path = PfhObjIAX;
+			sourceTree = "<group>";
+		};
+		22E64EE313952D4800196D29 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22E64EE413952D4800196D29 /* PfhObjIAX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,17 +783,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2AAC07A0554694100DB518D /* Headers */ = {
+		22E64EDE13952D4700196D29 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA747D9F0F9514B9006C5449 /* objiax_Prefix.pch in Headers */,
-				22CBA1F6113A3A8C00D4972E /* IAXCall.h in Headers */,
-				22CBA210113A3BFE00D4972E /* NetSockRunner.h in Headers */,
-				22CBA216113A3C4A00D4972E /* IAXFrameIn.h in Headers */,
-				2231D4341142053600C5F2AB /* IAXFrame.h in Headers */,
-				2231D4881143646000C5F2AB /* IAXFrameOut.h in Headers */,
-				2257CDCC115E508400E030A5 /* IEData.h in Headers */,
+				22E64EF013952D7F00196D29 /* IAXCall.h in Headers */,
+				22E64EF113952D7F00196D29 /* Phonefromhere.h in Headers */,
+				22E64EF213952D7F00196D29 /* IAXFrame.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,8 +807,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				223A21F313811FD2000B2166 /* PBXTargetDependency */,
-				223A21F113811FCC000B2166 /* PBXTargetDependency */,
 			);
 			name = VUCCaller;
 			productName = VUCCaller;
@@ -832,22 +830,22 @@
 			productReference = 22A65E00137ED1F600FB4644 /* libiosaudio.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D2AAC07D0554694100DB518D /* objiax */ = {
+		22E64EDF13952D4700196D29 /* PfhObjIAX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "objiax" */;
+			buildConfigurationList = 22E64EE713952D4800196D29 /* Build configuration list for PBXNativeTarget "PfhObjIAX" */;
 			buildPhases = (
-				D2AAC07A0554694100DB518D /* Headers */,
-				D2AAC07B0554694100DB518D /* Sources */,
-				D2AAC07C0554694100DB518D /* Frameworks */,
+				22E64EDC13952D4700196D29 /* Sources */,
+				22E64EDD13952D4700196D29 /* Frameworks */,
+				22E64EDE13952D4700196D29 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				223A21EF13811FB1000B2166 /* PBXTargetDependency */,
+				22E64EE913952D5100196D29 /* PBXTargetDependency */,
 			);
-			name = objiax;
-			productName = objiax;
-			productReference = D2AAC07E0554694100DB518D /* libobjiax.a */;
+			name = PfhObjIAX;
+			productName = PfhObjIAX;
+			productReference = 22E64EE013952D4700196D29 /* libPfhObjIAX.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -871,9 +869,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2AAC07D0554694100DB518D /* objiax */,
 				221BEDD8137B072F00AFB367 /* VUCCaller */,
 				22A65DFF137ED1F600FB4644 /* iosaudio */,
+				22E64EDF13952D4700196D29 /* PfhObjIAX */,
 			);
 		};
 /* End PBXProject section */
@@ -974,35 +972,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2AAC07B0554694100DB518D /* Sources */ = {
+		22E64EDC13952D4700196D29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22CBA1F7113A3A8C00D4972E /* IAXCall.m in Sources */,
-				22CBA211113A3BFE00D4972E /* NetSockRunner.m in Sources */,
-				22CBA217113A3C4A00D4972E /* IAXFrameIn.m in Sources */,
-				2231D4891143646000C5F2AB /* IAXFrameOut.m in Sources */,
-				2257CDCD115E508400E030A5 /* IEData.m in Sources */,
+				22E64EEA13952D6200196D29 /* IEData.m in Sources */,
+				22E64EEB13952D6200196D29 /* IAXCall.m in Sources */,
+				22E64EEC13952D6200196D29 /* Phonefromhere.m in Sources */,
+				22E64EED13952D6200196D29 /* IAXFrameIn.m in Sources */,
+				22E64EEE13952D6200196D29 /* IAXFrameOut.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		223A21EF13811FB1000B2166 /* PBXTargetDependency */ = {
+		22E64EE913952D5100196D29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 22A65DFF137ED1F600FB4644 /* iosaudio */;
-			targetProxy = 223A21EE13811FB1000B2166 /* PBXContainerItemProxy */;
-		};
-		223A21F113811FCC000B2166 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2AAC07D0554694100DB518D /* objiax */;
-			targetProxy = 223A21F013811FCC000B2166 /* PBXContainerItemProxy */;
-		};
-		223A21F313811FD2000B2166 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22A65DFF137ED1F600FB4644 /* iosaudio */;
-			targetProxy = 223A21F213811FD2000B2166 /* PBXContainerItemProxy */;
+			targetProxy = 22E64EE813952D5100196D29 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1034,38 +1022,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB921F08733DC00010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/objiax.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = objiax_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = objiax;
-			};
-			name = Debug;
-		};
-		1DEB922008733DC00010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				DSTROOT = /tmp/objiax.dst;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = objiax_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = objiax;
-			};
-			name = Release;
-		};
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1173,18 +1129,43 @@
 			};
 			name = Release;
 		};
+		22E64EE513952D4800196D29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/PfhObjIAX.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PfhObjIAX/PfhObjIAX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		22E64EE613952D4800196D29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/PfhObjIAX.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PfhObjIAX/PfhObjIAX-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "objiax" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB921F08733DC00010E9CD /* Debug */,
-				1DEB922008733DC00010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "objiax" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1208,6 +1189,15 @@
 			buildConfigurations = (
 				22A65E05137ED1F600FB4644 /* Debug */,
 				22A65E06137ED1F600FB4644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22E64EE713952D4800196D29 /* Build configuration list for PBXNativeTarget "PfhObjIAX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E64EE513952D4800196D29 /* Debug */,
+				22E64EE613952D4800196D29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
