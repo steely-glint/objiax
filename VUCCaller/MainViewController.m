@@ -16,7 +16,7 @@
 {
     [super viewDidLoad];
     log = [[NSMutableString alloc] init ];
-    nsr = [[NetSockRunner alloc] init];
+    nsr = [[Phonefromhere alloc] init];
     call = nil;
     //[nsr setHost: @"ss10.westhawk.co.uk"];
     [nsr setHost: @"api.phonefromhere.com"];

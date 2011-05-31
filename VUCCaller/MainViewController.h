@@ -7,7 +7,7 @@
 //
 
 #import "FlipsideViewController.h"
-#import "NetSockRunner.h"
+#import "Phonefromhere.h"
 #import "IAXCall.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate ,callStatusListener> {
@@ -15,7 +15,7 @@
     IBOutlet id bodyText;
     IBOutlet id botBut;
     NSMutableString *log;
-    NetSockRunner *nsr;
+    Phonefromhere *nsr;
     id call;
 }
 
