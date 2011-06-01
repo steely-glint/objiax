@@ -159,9 +159,6 @@ uint64_t getTime () {
             
         }
     }
-    if (NO == [full isRetryFrame]){
-        [full release]; // free it, or anyway pass ownership to the retry list.
-    }
     if (NO == [full iAmAnAck]){
         uint32_t now = [self getTimeStampNow];
         
@@ -169,6 +166,9 @@ uint64_t getTime () {
             NSLog(@"Giving up on %d srcNo timeout of %@ ",srcNo,[full getOsq]);
             [runner hungupCall:self cause:@"timeout" code:0 ];
         }
+    }
+    if (NO == [full isRetryFrame]){
+        [full release]; // free it, or anyway pass ownership to the retry list.
     }
     [sendLock unlock];
 }
