@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];  
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://vuc.me"]];
+    [webView loadRequest:request];
 }
 
 - (void)viewDidUnload
@@ -52,6 +54,25 @@
 - (IBAction)done:(id)sender
 {
     [self.delegate flipsideViewControllerDidFinish:self];
+}
+
+// UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"about to load %@",[[request URL] absoluteString]);
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSLog(@"Loading ");
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"Loaded ");
+
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"Failed with %d ",[error code]);
+
 }
 
 @end

@@ -10,8 +10,8 @@
 
 @protocol FlipsideViewControllerDelegate;
 
-@interface FlipsideViewController : UIViewController {
-
+@interface FlipsideViewController : UIViewController <UIWebViewDelegate> {
+    IBOutlet UIWebView * webView;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
