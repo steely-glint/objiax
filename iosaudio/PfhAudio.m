@@ -36,7 +36,7 @@ static int MAXRBUFF = 5;
             [codec decode:data audioData:din];
         }
     } else {
-        NSLog(@"Padding AudioQueue play buffer with empty buffer");
+        //NSLog(@"Padding AudioQueue play buffer with empty buffer");
         memset([din mutableBytes],0,aframeLen);
     }
     void *bytes = (void *)[din bytes];
@@ -251,9 +251,13 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
         NSLog(@"setting first due time of %d",stamp);
         firstWired = NO;
     }
-    [rcvdAudio setObject:data forKey:so];
+    int cnt = [rcvdAudio count];
+    if (cnt < 10) {
+        [rcvdAudio setObject:data forKey:so];
+    } else {
+        NSLog(@"skipping rcvd data for %d",stamp);
+    }
     //NSLog(@" adding rcv data for  %d",stamp);
-
     [rcvdLock unlock];
 }
 

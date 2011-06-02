@@ -67,6 +67,21 @@ uint64_t getTime () {
         }
     }
 }
+- (NSString *) stateName:(NSInteger) s {
+    NSString * ret = @"Unknown";
+    switch(s) {
+        case     kIAXCallStateINITIAL: ret = @"INITIAL"; break;
+        case    kIAXCallStateWAITING: ret = @"WAITING"; break;
+        case     kIAXCallStateLINKED: ret = @"LINKED"; break;
+        case    kIAXCallStateUP: ret = @"UP"; break;
+    }
+    return ret;
+}
+- (void) changeState:(NSInteger) newState detail:(NSString *) cause{
+    NSLog(@"Call %d state change from %@ to %@",srcNo,[self stateName:state],[self stateName:newState]);
+    state = newState;
+    [statusListener callStatusChanged:cause];
+}
 - (void) initQ {
     sendLock = [[NSRecursiveLock alloc] init];
     sentFullFrames = [[NSMutableDictionary alloc] init];
@@ -99,6 +114,23 @@ uint64_t getTime () {
     return ff;
 }
 
+- (void) notifyHangup:(NSInteger)code cause:(NSString *)cause {
+    [runner hungupCall:self cause:cause code:code ];
+    [audio stop];
+    [self changeState:kIAXCallStateINITIAL detail:cause];    
+}
+
+
+// come here when we see an ack for a sent fullframe
+- (void) tidyUp:(IAXFrameOut *)fack{
+    // for the moment only one we care about
+    if (([fack getFrameType] == IAXFrameTypeIAXControl)
+        && ([fack getSubClass] == IAXProtocolControlFrameTypeHANGUP)){
+            [self notifyHangup:0 cause:@"local Hangup"];
+        }
+}
+    
+
 - (void) ackedTo:(NSInteger) upto{
     // check list for 'uptos' in the sent list 
     // range is our lack to upto     
@@ -109,9 +141,10 @@ uint64_t getTime () {
         
         for(o=lack;o<upto;o++){
             NSNumber * num = [NSNumber numberWithInt:o];
-            id ob = [sentFullFrames objectForKey:num];
+            IAXFrameOut *ob = [sentFullFrames objectForKey:num];
             if (ob != nil){
                 [ob dumpFrame:@"Acked this "];
+                [self tidyUp:ob];
                 [sentFullFrames removeObjectForKey:num];
             }
         }
@@ -164,6 +197,7 @@ uint64_t getTime () {
         
         if (NO == [full setNextRetryTime:now] ){
             NSLog(@"Giving up on %d srcNo timeout of %@ ",srcNo,[full getOsq]);
+            [audio stop];
             [runner hungupCall:self cause:@"timeout" code:0 ];
         }
     }
@@ -230,7 +264,7 @@ void hexDump(NSData *blob){
     [ied addIETypeWithString:IAXIETypeCalltoken value:callToken];
     
     [new setPayload:payload];
-    state = kIAXCallStateWAITING;
+    [self changeState:kIAXCallStateWAITING detail:@"sent new"];    
     [self sendFullFrame:new];
 }
 
@@ -249,9 +283,9 @@ void hexDump(NSData *blob){
     [hang setFrameType:IAXFrameTypeIAXControl];
     [hang setSubClass:IAXProtocolControlFrameTypeHANGUP];
     [self sendFullFrame:hang];
-    [runner hungupCall:self cause:@"Local Hangup" code:0 ];
-    [audio stop];
+    [audio stop]; /// stop anyway/
 }
+
 
 
 
@@ -333,8 +367,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
         case IAXControlFrameTypeAnswer:
             // state Linked -> Up
             if (state == kIAXCallStateLINKED ) {
-                state = kIAXCallStateUP;
-                [statusListener callStatusChanged:@"Answered"];
+                [self changeState:kIAXCallStateUP detail:@"Answered"];
             } else {
                 NSLog(@"Protocol mixup - wrong state to get %@ ",[frame getFrameDescription]);
             }
@@ -360,10 +393,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
         case IAXControlFrameTypeFlashHook:
             break;
         case IAXControlFrameTypeHangup:
-            state = kIAXCallStateINITIAL;
-            [runner hungupCall:self cause:@"Hungup" code:0 ];
-            [audio stop];
-            [statusListener callStatusChanged:@"Hungup"];
+            [self notifyHangup:0 cause:@"Remote hungup"];
             break;
         case IAXControlFrameTypeHold:
             break;
@@ -374,7 +404,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
         case IAXControlFrameTypeRinging:
             // should only happen in Linked state
             if (state == kIAXCallStateLINKED) {
-                [statusListener callStatusChanged:@"Ringing"];
+                [self changeState:kIAXCallStateLINKED detail:@"Ringing"];
             } else {
                 logInvalidStateFrameReceived(frame);
             }
@@ -412,8 +442,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
             state = kIAXCallStateINITIAL;
             NSString * reason = [ied getIEOfType:IAXIETypeCause];
             NSNumber * code = [ied getIEOfType:IAXIETypeCausecode];
-            [runner hungupCall:self cause:reason code:code ];
-            [statusListener callStatusChanged:@"Hungup"];
+            [self notifyHangup:[code integerValue] cause:reason];
 
             break; 
         case IAXProtocolControlFrameTypeACCEPT:
@@ -431,6 +460,9 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
             [audio setCodec:cname];
             [audio setWireConsumer:self];
             codec = f;
+            if (state == kIAXCallStateWAITING) {
+                [self changeState:kIAXCallStateLINKED detail:@"Call Accepted"];
+            }
             break; 
         }
         case IAXProtocolControlFrameTypeAUTHREQ:
@@ -462,9 +494,8 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
             
             NSString * reason = [ied getIEOfType:IAXIETypeCause];
             NSNumber * code = [ied getIEOfType:IAXIETypeCausecode];
-            [runner hungupCall:self cause:reason code:code ];
-            [audio stop];
-            [statusListener callStatusChanged:@"Hungup"];
+            NSInteger nc = [code integerValue];
+            [self notifyHangup:nc cause:reason];
             
         }
             break;

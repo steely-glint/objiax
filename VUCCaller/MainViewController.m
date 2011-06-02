@@ -48,11 +48,7 @@
     [controller release];
 }
 
-- (void) hungup{
-    [botBut setTitle:@"Call" forState:UIControlStateNormal];
-    [botBut setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    call = nil;
-}
+
 
 - (IBAction)pushBut{  
     if (call == nil){
@@ -63,11 +59,8 @@
         //[nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
 
 
-        [botBut setTitle:@"Hangup" forState:UIControlStateNormal];
-        [botBut setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
     } else {
         [call hangup];
-        [self hungup];
     }
 }
 
@@ -121,13 +114,46 @@
 - (void) recvdText:(NSString *)mess{
     [self performSelectorOnMainThread:@selector(lRecvdText:) withObject:mess waitUntilDone:NO];
 }
-- (void) callStatusChanged:(NSString *) detail{
-    if (call != nil) {
+- (void) showStatusChanged:(NSString *) detail{
+    if (call != nil) {        
         NSInteger state = [call state];
-        if (state == kIAXCallStateINITIAL){
-            [self performSelectorOnMainThread:@selector(hungup) withObject:nil waitUntilDone:NO];
+        NSLog(@"Status change to %d - detail is %@",state,detail);
+        switch (state) {
+            case kIAXCallStateINITIAL:
+                [botBut setEnabled:YES];
+                [botBut setTitle:@"Call" forState:UIControlStateNormal];
+                [botBut setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                call = nil ; // that was a hangup of some sort
+                break;
+            case kIAXCallStateWAITING:
+                [botBut setEnabled:NO];
+
+                [botBut setTitle:@"Calling" forState:UIControlStateNormal];
+                [botBut setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+                break;      
+            case kIAXCallStateLINKED:
+                [botBut setEnabled:YES];
+
+                [botBut setTitle:@"Stop Ringing" forState:UIControlStateNormal];
+                [botBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                break;     
+            case kIAXCallStateUP:
+                [botBut setEnabled:YES];
+
+                [botBut setTitle:@"Hangup" forState:UIControlStateNormal];
+                [botBut setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                break;   
         }
     }
+    if (detail != nil){
+        [topLabel setText:detail];
+    }
+}
+
+- (void) callStatusChanged:(NSString *) detail{
+
+    [self performSelectorOnMainThread:@selector(showStatusChanged:) withObject:detail waitUntilDone:NO];
+  
     
 }
 @end
