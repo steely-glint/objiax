@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "228AECEB13951A92008FCE71"
-               BuildableName = "objiax.framework"
-               BlueprintName = "objiax"
+               BlueprintIdentifier = "22E1161C1395255D0094E9AE"
+               BuildableName = "PfhObjIAX.framework"
+               BlueprintName = "PfhObjIAX"
                ReferencedContainer = "container:objiax.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

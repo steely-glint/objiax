@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PfhObjIAX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>ProtocolTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -47,12 +52,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>228AECEB13951A92008FCE71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>22A65DFF137ED1F600FB4644</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>22DDDE2D1174CCBF003C1E2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22E1161C1395255D0094E9AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22E64EDF13952D4700196D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
