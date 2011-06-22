@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 
 @implementation MainViewController
 
@@ -16,10 +18,13 @@
 {
     [super viewDidLoad];
     log = [[NSMutableString alloc] init ];
+    setIAXLogLevel(LOGDEBUG);
     nsr = [[Phonefromhere alloc] init];
     call = nil;
     //[nsr setHost: @"ss10.westhawk.co.uk"];
-    [nsr setHost: @"api.phonefromhere.com"];
+    //[nsr setHost: @"api.phonefromhere.com"];
+
+    [nsr setHost: @"at.virtual-universe.net"];
 
     [nsr setPort: 4569];
     [nsr startIAX];
@@ -55,9 +60,9 @@
         //call = [nsr newCall:@"android" pass:@"marvin" exten:@"4000" statusListener:self];
 
         //call = [nsr newCall:@"android" pass:@"marvin" exten:@"2000" statusListener:self];
-        call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" statusListener:self];
-        //[nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
-
+        // call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" statusListener:self];
+        //call = [nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
+        call = [nsr newCall:@"droidtest" pass:@"sbestus52" exten:@"01234640349" statusListener:self];
 
     } else {
         [call hangup];
@@ -66,12 +71,12 @@
 
 - (IBAction)mute{  
     if (call != nil){
-        [call sendDtmf:@"*6*"];
+        [call sendDtmf:@"1"];
     }
 }
 - (IBAction)pinSend{  
     if (call != nil){
-        [call sendDtmf:@"74666#"];
+        //[call sendDtmf:@"74666#"];
     }
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -117,7 +122,7 @@
 - (void) showStatusChanged:(NSString *) detail{
     if (call != nil) {        
         NSInteger state = [call state];
-        NSLog(@"Status change to %d - detail is %@",state,detail);
+        IAXLog(LOGDEBUG,@"Status change to %d - detail is %@",state,detail);
         switch (state) {
             case kIAXCallStateINITIAL:
                 [botBut setEnabled:YES];

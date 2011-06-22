@@ -5,7 +5,7 @@
 //  Created by Tim Panton on 14/05/2011.
 //  Copyright 2011 phonefromhere.com. All rights reserved.
 //
-
+#import "IAXNSLog.h"
 #import "PfhAudio.h"
 #import "UlawCodec.h"
 #import "GSM610Codec.h"
@@ -54,17 +54,17 @@ static int MAXRBUFF = 5;
         int cnt = [rcvdAudio count];
         if (cnt > 5){
             // time for drastic action.....
-            NSLog(@"got %d entries but not %d",cnt,nextDue);
+            IAXLog(LOGDEBUG,@"got %d entries but not %d",cnt,nextDue);
             NSArray *stamps = [[rcvdAudio allKeys] sortedArrayUsingSelector:@selector(compare:)];
             NSInteger i =0;
             for (i =0; i< cnt -3;i++){
                 NSNumber *strm = [stamps objectAtIndex:i]; 
-                NSLog(@"removing %d",[strm integerValue]);
+                IAXLog(LOGDEBUG,@"removing %d",[strm integerValue]);
                 [rcvdAudio removeObjectForKey:strm];
             }
             nd = [stamps objectAtIndex:i];
             nextDue = [nd integerValue];
-            NSLog(@"skipping to %d",nextDue);
+            IAXLog(LOGDEBUG,@"skipping to %d",nextDue);
             buff = [rcvdAudio objectForKey:nd];
         }
     }
@@ -159,11 +159,11 @@ void audioRootChanged (
                        UInt32                    inDataSize,
                        const void                *inData
                        ){
-    NSLog(@"audioRootChanged");
+    IAXLog(LOGDEBUG,@"audioRootChanged");
     
 }
 void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) {
-	NSLog(@"interruptionListenerCallback");
+	IAXLog(LOGDEBUG,@"interruptionListenerCallback");
 }
 
 - (void) audioSessionStuff{
@@ -178,8 +178,31 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
     result = AudioSessionSetProperty (kAudioSessionProperty_AudioCategory, sizeof (sessionCategory),&sessionCategory);
 	if (result) printf("ERROR AudioSessionSetProperty!\n");
     
-
+    CFStringRef ar;
+    UInt32 sz = sizeof(ar);
+    AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &sz, &ar);
     
+    NSString * r = nil;
+    if((ar == NULL) || (CFStringGetLength(ar) == 0)){
+        r = @"Nil";
+    }else {
+        r = (NSString * )ar;
+    }
+    IAXLog(LOGDEBUG,@"AudioRoute: %@",r);
+
+    if ([r isEqualToString:@"ReceiverAndMicrophone"]){
+        
+    
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker; 
+     
+     result =	 AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,                         
+     sizeof (audioRouteOverride),
+     &audioRouteOverride);
+        if (result ==0){
+            IAXLog(LOGDEBUG,@"AudioRoute: %@",@"forced to Speakers");
+        }
+    }
+        
     Float64 preferredSampleRate = [codec getRate]; // try and get the hardware to resample
     AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareSampleRate, sizeof(preferredSampleRate), &preferredSampleRate);
     
@@ -204,13 +227,8 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
     size = sizeof(mHWBufferDuration);
     AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareIOBufferDuration, &size, &mHWBufferDuration);
     
-    NSLog(@" actual HW sample rate is %f and buffer duration is %f",(float)mHWSampleRate,mHWBufferDuration);
-	/*UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker; 
-	
-    result =	 AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,                         
-                                          sizeof (audioRouteOverride),
-                                          &audioRouteOverride);
-	if (result) printf("ERROR AudioSessionSetProperty!\n"); */
+    IAXLog(LOGDEBUG,@" actual HW sample rate is %f and buffer duration is %f",(float)mHWSampleRate,mHWBufferDuration);
+
     
     
     
@@ -248,14 +266,14 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
     NSNumber * so = [NSNumber numberWithInteger:stamp];
     if (firstWired == YES) {
         nextDue = stamp; // first ever
-        NSLog(@"setting first due time of %d",stamp);
+        IAXLog(LOGDEBUG,@"setting first due time of %d",stamp);
         firstWired = NO;
     }
     int cnt = [rcvdAudio count];
     if (cnt < 10) {
         [rcvdAudio setObject:data forKey:so];
     } else {
-        NSLog(@"skipping rcvd data for %d",stamp);
+        IAXLog(LOGDEBUG,@"skipping rcvd data for %d",stamp);
     }
     //NSLog(@" adding rcv data for  %d",stamp);
     [rcvdLock unlock];
@@ -314,7 +332,7 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
                                         CFRunLoopGetCurrent (),
                                         kCFRunLoopCommonModes,
                                         0,&playQ);
-    NSLog(@"Output AudioQueue =  %x" , (int) res);
+   IAXLog(LOGDEBUG,@"Output AudioQueue =  %x" , (int) res);
     
     Float32 gain = 1.0;                                       
     // Optionally, allow user to override gain setting here
@@ -336,7 +354,7 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
 	asbd.mFormatFlags =kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
     
 	OSStatus res = AudioQueueNewInput(&asbd, handleInputBuffer, self, CFRunLoopGetCurrent (), kCFRunLoopCommonModes, 0, &recQ);
-	NSLog(@"Input AudioQueue =  %d" , (int)res);
+	IAXLog(LOGDEBUG,@"Input AudioQueue =  %d" , (int)res);
 
 	for (int i=0; i<MAXRBUFF; i++){
         [self mkBuffer:NO];
@@ -355,16 +373,16 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
 	if ([NSThread isMultiThreaded]){
 		//[NSThread setThreadPriority:0.75];
         audioThread = [NSThread currentThread];
-        NSLog(@"Audio thread Started");
+        IAXLog(LOGDEBUG,@"Audio thread Started");
 	}
     [self audioSessionStuff ];
     [self setUpPlay];
     [self setUpRec];
     int res = AudioQueueStart(recQ, NULL);
-    NSLog(@"Started RecQ %d" , (int)res);
+    IAXLog(LOGDEBUG,@"Started RecQ %d" , (int)res);
     
     res = AudioQueueStart(playQ, NULL);
-    NSLog(@"Started PlayQ %d" , (int)res);
+    IAXLog(LOGDEBUG,@"Started PlayQ %d" , (int)res);
 	NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 	[runLoop run];
     [pool release];
@@ -377,7 +395,7 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
         aframeLen = 2* (frameIntervalMS * [codec getRate] )/1000;
         [self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
     }
-    NSLog(@"set codec to %@ - res = %@",codecname,((codec != nil)?@"Yes":@"NO"));
+    IAXLog(LOGINFO,@"set codec to %@ - res = %@",codecname,((codec != nil)?@"Yes":@"NO"));
     return (codec != nil);
 }
 

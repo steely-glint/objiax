@@ -6,7 +6,7 @@
 //  Copyright 2010 phonefromhere.com. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-
+#import "IAXNSLog.h"
 enum {
 	IAXFrameTypeDTMF =1, IAXFrameTypeVoice,IAXFrameTypeVideo,IAXFrameTypeControl,IAXFrameTypeNull,IAXFrameTypeIAXControl,
 	IAXFrameTypeText,IAXFrameTypeImage,IAXFrameTypeHTML,IAXFrameTypeComfort

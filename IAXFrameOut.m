@@ -218,7 +218,7 @@ int retryintervals [] = {100,200,400,800,1600,3200};
         retryCount++;
         [self setRetryFrame:YES];
         retryDue = now + retryintervals[retryCount];
-        NSLog(@"Retry %d for %d due at %d",retryCount,[self getOsq],retryDue);
+        IAXLog(LOGDEBUG,@"Retry %d for %d due at %d",retryCount,[self getOsq],retryDue);
         ret = YES;
     }
     return ret;

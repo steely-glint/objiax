@@ -20,7 +20,7 @@
 	encoder_st = speex_encoder_init(&speex_nb_mode);
 	int tmp=0;
 	speex_encoder_ctl(encoder_st, SPEEX_SET_VBR, &tmp);
-	tmp=5;
+	tmp=3;
 	speex_encoder_ctl(encoder_st, SPEEX_SET_QUALITY, &tmp);
 	tmp=1;
 	speex_encoder_ctl(encoder_st, SPEEX_SET_COMPLEXITY, &tmp);

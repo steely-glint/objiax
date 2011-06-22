@@ -62,7 +62,7 @@
 			int itret = 0;
 			itret = (*data << 8 ) |  *(data+1);
 			ret = [NSNumber numberWithInt: itret];
-            NSLog(@"got AuthMethosd is value = %d length = %d\n",itret,len);
+            IAXLog(LOGIAX,@"got AuthMethosd is value = %d length = %d\n",itret,len);
 			break;
 		}
             // ints
@@ -70,7 +70,7 @@
             uint32_t itret = 0;
             itret = (*data << 24 ) |  *(data+1) << 16 | *(data+2) << 8 | *(data+3);
 			ret = [NSNumber numberWithInt: itret];
-            NSLog(@"got int of value = %d length = %d\n",itret,len);
+            IAXLog(LOGIAX,@"got int of value = %d length = %d\n",itret,len);
             break;
         }
 // strings
