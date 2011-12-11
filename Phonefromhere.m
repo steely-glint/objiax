@@ -216,9 +216,10 @@
     NSLog(@"Adding call with srcNo of %d ",[call srcNo]) ;
 }
 
-- (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten statusListener:(id<callStatusListener>)statusListener {
+- (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten forceCodec:(NSString *)codec statusListener:(id<callStatusListener>)statusListener {
     IAXCall * call = [IAXCall alloc];
     [call setSrcNo:[self mkCallNo]];
+    [call setCodecName:codec];
     [call initQ];
     [call setUser:user];
     [call setPass:pass];
