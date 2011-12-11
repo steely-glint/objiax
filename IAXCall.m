@@ -85,6 +85,8 @@ uint64_t getTime () {
     [statusListener callStatusChanged:cause];
 }
 - (void) initQ {
+    u_int64_t onlycodecmap = 0L;
+    IAXCodecTypes onlycodec = 0;
     sendLock = [[NSRecursiveLock alloc] init];
     sentFullFrames = [[NSMutableDictionary alloc] init];
     lack =0;
@@ -92,10 +94,17 @@ uint64_t getTime () {
     firstVoiceFrame = YES;
     audio = [[PfhAudio alloc] init];
     [self mkCodecMap];
-    for (int i=0;i<33;i++){
-        if ([codecNames[i] compare:codecName] == NSOrderedSame){
-            codecmap |= 1<<(i-1);
-            IAXLog(LOGDEBUG,@"set codec  %@ as %d",codecNames[i],(i-1));
+    if (codecName != nil){
+        for (int i=0;i<33;i++){
+                if ([codecNames[i] compare:codecName] == NSOrderedSame){
+                    onlycodecmap |= 1<<(i-1);
+                    onlycodec = i;
+                    NSLog(@"set only codec  %@ as %d",codecNames[i],(i-1));
+                }
+        }
+        if (onlycodec != 0) {
+            codec = onlycodec;
+            codecmap = onlycodecmap;
         }
     }
     if (codec == 0){
@@ -548,6 +557,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
 - (void) rcv:(IAXFrameIn *) frame {
     // - really us ?
     if ([frame isMiniFrame]){
+        //NSLog(@"speaker audio frame datasize is %d",[[frame getPayload] length]);
         [audio consumeWireData:[frame getPayload] time:[self getFrameTimeWithFrame:frame]];
     } else {
         [frame dumpFrame:@"<- "];
@@ -603,6 +613,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
 }
 - (void) consumeAudioData:(NSData*)data time:(NSInteger)stamp{
     NSInteger ts = stamp;
+    //NSLog(@"mic audio frame datasize is %d",[data length]);
     if (firstVoiceFrame == YES){
         IAXFrameOut * ff = [self mkFullFrame];
         [ff setFrameType:IAXFrameTypeVoice];

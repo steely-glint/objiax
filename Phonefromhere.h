@@ -24,7 +24,7 @@
 
 
 - (void) startIAX;
-- (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten statusListener:(id <callStatusListener>)statusListener ;
+- (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten forceCodec:(NSString *)codec statusListener:(id <callStatusListener>)statusListener ;
 -(BOOL) sendFrame : (IAXFrameOut *) frame;
 - (void)hungupCall: (IAXCall *)call cause:(NSString *)reason code:(NSNumber *)code ;
 @end

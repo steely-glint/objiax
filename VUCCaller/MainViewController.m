@@ -22,9 +22,14 @@
     nsr = [[Phonefromhere alloc] init];
     call = nil;
     //[nsr setHost: @"ss10.westhawk.co.uk"];
+
     //[nsr setHost: @"api.phonefromhere.com"];
 
-    [nsr setHost: @"at.virtual-universe.net"];
+
+    //nsr setHost: @"api.phonefromhere.com"];
+    [nsr setHost:@"at.virtual-universe.net"];
+    
+
 
     [nsr setPort: 4569];
     [nsr startIAX];
@@ -62,7 +67,10 @@
         //call = [nsr newCall:@"android" pass:@"marvin" exten:@"2000" statusListener:self];
         // call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" statusListener:self];
         //call = [nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
-        call = [nsr newCall:@"droidtest" pass:@"sbestus52" exten:@"01234640349" statusListener:self];
+        //call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" forceCodec:nill statusListener:self];
+    call = [nsr newCall:@"droidtest" pass:@"sbestus52" exten:@"01234640349" forceCodec:@"SPEEX" statusListener:self];        
+
+        //[nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
 
     } else {
         [call hangup];
@@ -72,6 +80,8 @@
 - (IBAction)mute{  
     if (call != nil){
         [call sendDtmf:@"1"];
+        //[call sendDtmf:@"*6*"];
+
     }
 }
 - (IBAction)pinSend{  
