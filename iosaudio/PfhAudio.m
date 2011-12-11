@@ -189,7 +189,7 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
         r = (NSString * )ar;
     }
     IAXLog(LOGDEBUG,@"AudioRoute: %@",r);
-
+/*
     if ([r isEqualToString:@"ReceiverAndMicrophone"]){
         
     
@@ -201,7 +201,7 @@ void interruptionListenerCallback (void *inUserData, UInt32  interruptionState) 
         if (result ==0){
             IAXLog(LOGDEBUG,@"AudioRoute: %@",@"forced to Speakers");
         }
-    }
+    } */
         
     Float64 preferredSampleRate = [codec getRate]; // try and get the hardware to resample
     AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareSampleRate, sizeof(preferredSampleRate), &preferredSampleRate);

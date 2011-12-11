@@ -1,481 +1,0 @@
-Tobjiax
-v7
-r0
-t294504894.909915
-cCheck dependencies
-cProcessPCH /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch.gch objiax_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXCall.o /project2/softphone/objiax/IAXCall.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/NetSockRunner.o /project2/softphone/objiax/NetSockRunner.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameIn.o /project2/softphone/objiax/IAXFrameIn.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameOut.o /project2/softphone/objiax/IAXFrameOut.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IEData.o /project2/softphone/objiax/IEData.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/UIPadTest.o /project2/softphone/objiax/UIPadTest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLibtool /project2/softphone/objiax/build/Debug-iphonesimulator/libobjiax.a normal i386
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk
-c000000004AF0C10000000000000000EE
-t1257292032
-s238
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFSocketStream.h
-c000000004ABDC89C00000000000060BB
-t1253951644
-s24763
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004ABDC952000000000027E880
-t1253951826
-s2615424
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004ABDC93F0000000000001355
-t1253951807
-s4949
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004ABDEE1D0000000000000788
-t1253961245
-s1928
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/usr/include/netinet/in.h
-c00000000476344B700000000000052AA
-t1197687991
-s21162
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/usr/include/sys/socket.h
-c00000000476344C000000000000055F1
-t1197688000
-s22001
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/usr/include/unistd.h
-c000000004748A13300000000000053FF
-t1195942195
-s21503
-
-N/project2/softphone/objiax/IAXCall.h
-c000000004B8A030C00000000000000D4
-t1267335948
-s212
-i<Foundation/Foundation.h>
-
-N/project2/softphone/objiax/IAXCall.m
-c000000004B932FFE00000000000000C6
-t1267937278
-s198
-i"IAXCall.h"
-
-N/project2/softphone/objiax/IAXFrame.h
-c000000004BA61835000000000000116B
-t1269176373
-s4459
-i<Foundation/Foundation.h>
-
-N/project2/softphone/objiax/IAXFrame.m
-c000000004B91CC7500000000000000BE
-t1267846261
-s190
-i"IAXFrame.h"
-
-N/project2/softphone/objiax/IAXFrameIn.h
-c000000004B91CBCC00000000000001F0
-t1267846092
-s496
-i<Foundation/Foundation.h>
-
-N/project2/softphone/objiax/IAXFrameIn.m
-c000000004B91CBDF00000000000000C2
-t1267846111
-s194
-i"IAXFrameIn.h"
-
-N/project2/softphone/objiax/IAXFrameOut.h
-c000000004BA5EBDD000000000000014E
-t1269165021
-s334
-i<Foundation/Foundation.h>
-i"IAXFrame.h"
-
-N/project2/softphone/objiax/IAXFrameOut.m
-c000000004BAE1BE70000000000001AC2
-t1269701607
-s6850
-i"IAXFrameOut.h"
-
-N/project2/softphone/objiax/IAXFullFrame.h
-c000000004B8A068100000000000000F3
-t1267336833
-s243
-i<Foundation/Foundation.h>
-i"IAXFrame.h"
-
-N/project2/softphone/objiax/IAXFullFrame.m
-c000000004B8A050D00000000000000CA
-t1267336461
-s202
-i"IAXFullFrame.h"
-
-N/project2/softphone/objiax/IAXMiniFrame.h
-c000000004B8A068100000000000000F3
-t1267336833
-s243
-i<Foundation/Foundation.h>
-i"IAXFrame.h"
-
-N/project2/softphone/objiax/IAXMiniFrame.m
-c000000004B8A054B00000000000000CA
-t1267336523
-s202
-i"IAXMiniFrame.h"
-
-N/project2/softphone/objiax/IAXPeer.h
-c00000000000000000000000000000000
-t2
-s0
-
-N/project2/softphone/objiax/IAXPeer.m
-c000000004BB8D69200000000000006DD
-t1270404754
-s1757
-i<sys/socket.h>
-i<netinet/in.h>
-i<unistd.h>
-i<CFNetwork/CFSocketStream.h>
-i"IAXPeer.h"
-
-N/project2/softphone/objiax/IAXVoiceFrame.h
-c000000004B8A068A00000000000000FD
-t1267336842
-s253
-i<Foundation/Foundation.h>
-i"IAXFullFrame.h"
-
-N/project2/softphone/objiax/IAXVoiceFrame.m
-c000000004B8A061E00000000000000CD
-t1267336734
-s205
-i"IAXVoiceFrame.h"
-
-N/project2/softphone/objiax/IEData.h
-c000000004BAE2E7F0000000000000349
-t1269706367
-s841
-i<Foundation/Foundation.h>
-i"IAXFrame.h"
-
-N/project2/softphone/objiax/IEData.m
-c000000004BB8D6BB0000000000000A05
-t1270404795
-s2565
-i"IEData.h"
-
-N/project2/softphone/objiax/NetSockRunner.h
-c000000004BC44DAD0000000000000161
-t1271156141
-s353
-i<Foundation/Foundation.h>
-
-N/project2/softphone/objiax/NetSockRunner.m
-c000000004BDD91F30000000000000807
-t1272812019
-s2055
-i<sys/socket.h>
-i<netinet/in.h>
-i<unistd.h>
-i<CFNetwork/CFSocketStream.h>
-i"NetSockRunner.h"
-
-N/project2/softphone/objiax/UIPadTest.h
-c000000004BDD92380000000000000137
-t1272812088
-s311
-i<UIKit/UIKit.h>
-i"NetSockRunner.h"
-
-N/project2/softphone/objiax/UIPadTest.m
-c000000004BDD91F4000000000000052C
-t1272812020
-s1324
-i"UIPadTest.h"
-
-N/project2/softphone/objiax/build/Debug-iphonesimulator/libobjiax.a
-t1272812089
-s89384
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXCall.o
-t1272810156
-s4836
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrame.o
-t1267336605
-s4848
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameIn.o
-t1272810156
-s4848
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameOut.o
-t1272810156
-s18576
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFullFrame.o
-t1267336833
-s4872
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXMiniFrame.o
-t1267336833
-s4872
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXPeer.o
-t1270404775
-s11836
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXVoiceFrame.o
-t1267336843
-s4888
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IEData.o
-t1272810156
-s13880
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/NetSockRunner.o
-t1272812024
-s14272
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/UIPadTest.o
-t1272812088
-s32184
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/objiax.LinkFileList
-c000000004BDD8AA600000000000002A8
-t1272810150
-s680
-
-N/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/testProto.o
-t2
-s0
-
-N/project2/softphone/objiax/objiax_Prefix.pch
-c000000004B8A01AF00000000000000BC
-t1267335599
-s188
-i<Foundation/Foundation.h>
-
-N/project2/softphone/objiax/testProto.h
-c000000004BDC42000000000000000382
-t1272726016
-s898
-i<SenTestingKit/SenTestingKit.h>
-i<UIKit/UIKit.h>
-
-N/project2/softphone/objiax/testProto.m
-c000000004BDC420000000000000002C0
-t1272726016
-s704
-i"testProto.h"
-
-N/var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch.gch
-t1272810155
-s8964592
-
-N/var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch.gch
-t1267938713
-s8972784
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies294504894#294504894#0(0"0(0#1#0"4300911832#0"0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXCall.o /project2/softphone/objiax/IAXCall.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294502955.832384
-e294502956.106203
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXCall.o
-x/project2/softphone/objiax/IAXCall.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@44"Compile /project2/softphone/objiax/IAXCall.m294502955#294502956#0(0"0(0#0#36"/project2/softphone/objiax/IAXCall.m4300911832#1712"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/IAXCall.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXCall.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrame.o /project2/softphone/objiax/IAXFrame.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289029405.151427
-e289029405.218632
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrame.o
-x/project2/softphone/objiax/IAXFrame.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Compile /project2/softphone/objiax/IAXFrame.m289029405#289029405#0(0"0(0#0#37"/project2/softphone/objiax/IAXFrame.m4300885448#1714"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch -c /project2/softphone/objiax/IAXFrame.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrame.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameIn.o /project2/softphone/objiax/IAXFrameIn.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294502956.106404
-e294502956.308710
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameIn.o
-x/project2/softphone/objiax/IAXFrameIn.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@47"Compile /project2/softphone/objiax/IAXFrameIn.m294502956#294502956#0(0"0(0#0#39"/project2/softphone/objiax/IAXFrameIn.m4300911832#1718"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/IAXFrameIn.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameIn.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameOut.o /project2/softphone/objiax/IAXFrameOut.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294502956.225615
-e294502956.425102
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameOut.o
-x/project2/softphone/objiax/IAXFrameOut.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@48"Compile /project2/softphone/objiax/IAXFrameOut.m294502956#294502956#0(0"0(0#0#40"/project2/softphone/objiax/IAXFrameOut.m4300911832#1720"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/IAXFrameOut.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFrameOut.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFullFrame.o /project2/softphone/objiax/IAXFullFrame.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289029633.121126
-e289029633.232675
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFullFrame.o
-x/project2/softphone/objiax/IAXFullFrame.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@49"Compile /project2/softphone/objiax/IAXFullFrame.m289029633#289029633#0(0"0(0#0#41"/project2/softphone/objiax/IAXFullFrame.m4300885448#1722"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch -c /project2/softphone/objiax/IAXFullFrame.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXFullFrame.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXMiniFrame.o /project2/softphone/objiax/IAXMiniFrame.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289029633.122743
-e289029633.247700
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXMiniFrame.o
-x/project2/softphone/objiax/IAXMiniFrame.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@49"Compile /project2/softphone/objiax/IAXMiniFrame.m289029633#289029633#0(0"0(0#0#41"/project2/softphone/objiax/IAXMiniFrame.m4300885448#1722"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch -c /project2/softphone/objiax/IAXMiniFrame.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXMiniFrame.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXPeer.o /project2/softphone/objiax/IAXPeer.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s292097575.079431
-e292097575.188984
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXPeer.o
-x/project2/softphone/objiax/IAXPeer.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@44"Compile /project2/softphone/objiax/IAXPeer.m292097575#292097575#0(0"0(0#0#36"/project2/softphone/objiax/IAXPeer.m4300885448#1712"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch -c /project2/softphone/objiax/IAXPeer.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXPeer.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXVoiceFrame.o /project2/softphone/objiax/IAXVoiceFrame.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289029643.544637
-e289029643.616373
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXVoiceFrame.o
-x/project2/softphone/objiax/IAXVoiceFrame.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@50"Compile /project2/softphone/objiax/IAXVoiceFrame.m289029643#289029643#0(0"0(0#0#42"/project2/softphone/objiax/IAXVoiceFrame.m4300885448#1724"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch -c /project2/softphone/objiax/IAXVoiceFrame.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IAXVoiceFrame.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IEData.o /project2/softphone/objiax/IEData.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294502956.308840
-e294502956.396908
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IEData.o
-x/project2/softphone/objiax/IEData.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/project2/softphone/objiax/IEData.m: In function '-[IEData getIEOfType:]':
-o/project2/softphone/objiax/IEData.m:62: warning: assignment discards qualifiers from pointer target type
-o/project2/softphone/objiax/IEData.m:79: warning: 'IEData' may not respond to '-mkIETypeWithBytesAndLength:data:length:'
-o/project2/softphone/objiax/IEData.m:79: warning: (Messages without a matching method signature
-o/project2/softphone/objiax/IEData.m:79: warning: will be assumed to return 'id' and accept
-o/project2/softphone/objiax/IEData.m:79: warning: '...' as arguments.)
-o/project2/softphone/objiax/IEData.m: In function '-[IEData mkIETypeWithBytes:data:lenght:]':
-o/project2/softphone/objiax/IEData.m:91: warning: assignment makes pointer from integer without a cast
-o/project2/softphone/objiax/IEData.m: At top level:
-o/project2/softphone/objiax/IEData.m:111: warning: incomplete implementation of class 'IEData'
-o/project2/softphone/objiax/IEData.m:111: warning: method definition for '-mkIETypeWithBytes::' not found
-lSLF07#2@43"Compile /project2/softphone/objiax/IEData.m294502956#294502956#0(1001"/project2/softphone/objiax/IEData.m: In function '-[IEData getIEOfType:]':/project2/softphone/objiax/IEData.m:62: warning: assignment discards qualifiers from pointer target type/project2/softphone/objiax/IEData.m:79: warning: 'IEData' may not respond to '-mkIETypeWithBytesAndLength:data:length:'/project2/softphone/objiax/IEData.m:79: warning: (Messages without a matching method signature/project2/softphone/objiax/IEData.m:79: warning: will be assumed to return 'id' and accept/project2/softphone/objiax/IEData.m:79: warning: '...' as arguments.)/project2/softphone/objiax/IEData.m: In function '-[IEData mkIETypeWithBytes:data:lenght:]':/project2/softphone/objiax/IEData.m:91: warning: assignment makes pointer from integer without a cast/project2/softphone/objiax/IEData.m: At top level:/project2/softphone/objiax/IEData.m:111: warning: incomplete implementation of class 'IEData'/project2/softphone/objiax/IEData.m:111: warning: method definition for '-mkIETypeWithBytes::' not found7(22@55"Assignment discards qualifiers from pointer target type294502956#75#105#0(6@35"/project2/softphone/objiax/IEData.m292097595#62#0#62#0#55"assignment discards qualifiers from pointer target type0(22@70"'IEData' may not respond to '-mkIETypeWithBytesAndLength:data:length:'294502956#180#120#0(6@35"/project2/softphone/objiax/IEData.m292097595#79#0#79#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)294502956#300#95#0(6@35"/project2/softphone/objiax/IEData.m292097595#79#0#79#0#0"0(22@52"Assignment makes pointer from integer without a cast294502956#649#102#0(6@35"/project2/softphone/objiax/IEData.m292097595#91#0#91#0#0"0(23@13"At top level:294502956#751#51#0(6@35"/project2/softphone/objiax/IEData.m292097595#0#0#0#0#0"0(22@43"Incomplete implementation of class 'IEData'294502956#802#94#0(6@35"/project2/softphone/objiax/IEData.m292097595#111#0#111#0#38"incomplete implementation of class '*'0(22@54"Method definition for '-mkIETypeWithBytes::' not found294502956#896#105#0(6@35"/project2/softphone/objiax/IEData.m292097595#111#0#111#0#35"method definition for '*' not found0(0#0#35"/project2/softphone/objiax/IEData.m3414973617650413056#1710"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/IEData.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/IEData.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/NetSockRunner.o /project2/softphone/objiax/NetSockRunner.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294504822.595668
-e294504824.456966
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/NetSockRunner.o
-x/project2/softphone/objiax/NetSockRunner.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@50"Compile /project2/softphone/objiax/NetSockRunner.m294504822#294504824#0(0"0(0#0#42"/project2/softphone/objiax/NetSockRunner.m4300911832#1724"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/NetSockRunner.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/NetSockRunner.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/UIPadTest.o /project2/softphone/objiax/UIPadTest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s294504888.800057
-e294504888.981241
-r1
-xCompileC
-xbuild/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/UIPadTest.o
-x/project2/softphone/objiax/UIPadTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@46"Compile /project2/softphone/objiax/UIPadTest.m294504888#294504888#0(0"0(0#0#38"/project2/softphone/objiax/UIPadTest.m4300911832#1716"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -include /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch -c /project2/softphone/objiax/UIPadTest.m -o /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/UIPadTest.o0#
-
-CCompileC build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/testProto.o /project2/softphone/objiax/testProto.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CLibtool /project2/softphone/objiax/build/Debug-iphonesimulator/libobjiax.a normal i386
-s294504888.981391
-e294504889.016115
-r1
-xLibtool
-x/project2/softphone/objiax/build/Debug-iphonesimulator/libobjiax.a
-xnormal
-xi386
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-lSLF07#2@59"Libtool build/Debug-iphonesimulator/libobjiax.a normal i386294504888#294504889#0(136"/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 0(0#0#0"4300911832#690"    cd /project2/softphone/objiax    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool -static -arch_only i386 -syslibroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -L/project2/softphone/objiax/build/Debug-iphonesimulator -filelist /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/Objects-normal/i386/objiax.LinkFileList -ObjC -framework Foundation -o /project2/softphone/objiax/build/Debug-iphonesimulator/libobjiax.a0#
-
-CProcessPCH /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch.gch objiax_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s294502950.926976
-e294502955.832104
-r1
-xProcessPCH
-x/var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch.gch
-xobjiax_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@28"Precompile objiax_Prefix.pch294502951#294502955#0(0"0(0#0#44"/project2/softphone/objiax/objiax_Prefix.pch7092940111018812416#1611"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -c /project2/softphone/objiax/objiax_Prefix.pch -o /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-apmqqyucuasidkgcyhoyatxtmlnn/objiax_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch.gch objiax_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s289631512.654461
-e289631513.250516
-r1
-xProcessPCH
-x/var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch.gch
-xobjiax_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@28"Precompile objiax_Prefix.pch289631512#289631513#0(0"0(0#0#44"/project2/softphone/objiax/objiax_Prefix.pch4300885448#1611"    cd /project2/softphone/objiax    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-generated-files.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-own-target-headers.hmap -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-all-target-headers.hmap -iquote /project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/objiax-project-headers.hmap -F/project2/softphone/objiax/build/Debug-iphonesimulator -I/project2/softphone/objiax/build/Debug-iphonesimulator/include -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources/i386 -I/project2/softphone/objiax/build/objiax.build/Debug-iphonesimulator/objiax.build/DerivedSources -c /project2/softphone/objiax/objiax_Prefix.pch -o /var/folders/eN/eNCB4o+jGI0RibKBozND7U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/objiax_Prefix-czysaiggheptikarjcsvnqmmqcmf/objiax_Prefix.pch.gch0#
-

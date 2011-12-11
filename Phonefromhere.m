@@ -19,7 +19,7 @@
     if (self) {
         calls = [[NSMutableDictionary alloc] init];
         audios = [[NSMutableDictionary alloc] init];
-        version = @"1.2 22/6/2011";
+        version = @"1.3 12/12/2011";
     }
     return self;
 }
