@@ -1,1 +1,2 @@
-Nothing to see here, move along.
+A limited implementation of the IAX2 protocol in ObjC for iphone
+Supports a single outbound call.
