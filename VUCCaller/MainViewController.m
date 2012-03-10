@@ -20,6 +20,8 @@
  */
 
 #import "MainViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 
 @implementation MainViewController
 
@@ -29,12 +31,10 @@
 {
     [super viewDidLoad];
     log = [[NSMutableString alloc] init ];
+    setIAXLogLevel(LOGDEBUG);
     nsr = [[Phonefromhere alloc] init];
     call = nil;
     [nsr setHost: @"api.phonefromhere.com"];
-    
-
-
     [nsr setPort: 4569];
     [nsr startIAX];
     [self addText: @"started \n"];
@@ -75,8 +75,6 @@
 - (IBAction)mute{  
     if (call != nil){
         [call sendDtmf:@"*6*"];
-        //[call sendDtmf:@"1"];
-
     }
 }
 - (IBAction)pinSend{  
@@ -127,7 +125,7 @@
 - (void) showStatusChanged:(NSString *) detail{
     if (call != nil) {        
         NSInteger state = [call state];
-        NSLog(@"Status change to %d - detail is %@",state,detail);
+        IAXLog(LOGDEBUG,@"Status change to %d - detail is %@",state,detail);
         switch (state) {
             case kIAXCallStateINITIAL:
                 [botBut setEnabled:YES];

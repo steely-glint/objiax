@@ -20,7 +20,7 @@
  */
 
 #import "FlipsideViewController.h"
-
+#import "IAXNSLog.h"
 
 @implementation FlipsideViewController
 
@@ -71,20 +71,20 @@
 
 // UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    NSLog(@"about to load %@",[[request URL] absoluteString]);
+    IAXLog(LOGDEBUG,@"about to load %@",[[request URL] absoluteString]);
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    NSLog(@"Loading ");
+    IAXLog(LOGDEBUG,@"Loading ");
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    NSLog(@"Loaded ");
+    IAXLog(LOGDEBUG,@"Loaded ");
 
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    NSLog(@"Failed with %d ",[error code]);
+    IAXLog(LOGDEBUG,@"Failed with %d ",[error code]);
 
 }
 

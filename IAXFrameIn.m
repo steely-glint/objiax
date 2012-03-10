@@ -196,7 +196,7 @@ NSString * pcFrameSubClasses[] = {
         [prt appendFormat:@"%@ ",[self getFrameDescription]];
     }
     [prt appendFormat:@"pl=%d\n",[[self getPayload] length]];
-    NSLog(@"%@",prt);
+    IAXLog(LOGIAX,@"%@",prt);
     [prt release];
 }
 - (BOOL) mustSendAck{

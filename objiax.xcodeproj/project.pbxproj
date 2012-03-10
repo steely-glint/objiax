@@ -143,6 +143,10 @@
 		22A65EBD137EE0D800FB4644 /* PfhAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65EBB137EE0D800FB4644 /* PfhAudio.h */; };
 		22A65EBE137EE0D800FB4644 /* PfhAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A65EBC137EE0D800FB4644 /* PfhAudio.m */; };
 		22C4AA5F138682A1005C1E19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C4AA5E138682A1005C1E19 /* Security.framework */; };
+		22C8D78213AF4DFB00D4DDC5 /* IAXNSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 22C8D78013AF4DFB00D4DDC5 /* IAXNSLog.h */; };
+		22C8D78313AF4DFB00D4DDC5 /* IAXNSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C8D78113AF4DFB00D4DDC5 /* IAXNSLog.m */; };
+		22D0ED8A13991E4000630019 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22D0ED8813991E4000630019 /* MainWindow-iPad.xib */; };
+		22D0ED8C1399217F00630019 /* MainView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22D0ED8B1399217F00630019 /* MainView-iPad.xib */; };
 		22E64EE113952D4800196D29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		22E64EEA13952D6200196D29 /* IEData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257CDCB115E508400E030A5 /* IEData.m */; };
 		22E64EEB13952D6200196D29 /* IAXCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CBA1F5113A3A8C00D4972E /* IAXCall.m */; };
@@ -336,12 +340,16 @@
 		22A65EBB137EE0D800FB4644 /* PfhAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PfhAudio.h; sourceTree = "<group>"; };
 		22A65EBC137EE0D800FB4644 /* PfhAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PfhAudio.m; sourceTree = "<group>"; };
 		22C4AA5E138682A1005C1E19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		22C8D78013AF4DFB00D4DDC5 /* IAXNSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAXNSLog.h; sourceTree = "<group>"; };
+		22C8D78113AF4DFB00D4DDC5 /* IAXNSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAXNSLog.m; sourceTree = "<group>"; };
 		22CBA1F4113A3A8C00D4972E /* IAXCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAXCall.h; sourceTree = "<group>"; };
 		22CBA1F5113A3A8C00D4972E /* IAXCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAXCall.m; sourceTree = "<group>"; };
 		22CBA20E113A3BFD00D4972E /* Phonefromhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phonefromhere.h; sourceTree = "<group>"; };
 		22CBA20F113A3BFD00D4972E /* Phonefromhere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phonefromhere.m; sourceTree = "<group>"; };
 		22CBA214113A3C4A00D4972E /* IAXFrameIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAXFrameIn.h; sourceTree = "<group>"; };
 		22CBA215113A3C4A00D4972E /* IAXFrameIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAXFrameIn.m; sourceTree = "<group>"; };
+		22D0ED8913991E4000630019 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		22D0ED8B1399217F00630019 /* MainView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainView-iPad.xib"; sourceTree = "<group>"; };
 		22E11616139521B30094E9AE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		22E64EE013952D4700196D29 /* libPfhObjIAX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPfhObjIAX.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E64EE413952D4800196D29 /* PfhObjIAX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PfhObjIAX-Prefix.pch"; sourceTree = "<group>"; };
@@ -443,6 +451,8 @@
 				2231D4331142053600C5F2AB /* IAXFrame.h */,
 				2231D4861143646000C5F2AB /* IAXFrameOut.h */,
 				2231D4871143646000C5F2AB /* IAXFrameOut.m */,
+				22C8D78013AF4DFB00D4DDC5 /* IAXNSLog.h */,
+				22C8D78113AF4DFB00D4DDC5 /* IAXNSLog.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -450,6 +460,7 @@
 		221BEDDE137B072F00AFB367 /* VUCCaller */ = {
 			isa = PBXGroup;
 			children = (
+				22D0ED8713991E3B00630019 /* iPad */,
 				221BEDE7137B072F00AFB367 /* VUCCallerAppDelegate.h */,
 				221BEDE8137B073000AFB367 /* VUCCallerAppDelegate.m */,
 				221BEDEA137B073000AFB367 /* MainWindow.xib */,
@@ -694,6 +705,15 @@
 			path = g722;
 			sourceTree = "<group>";
 		};
+		22D0ED8713991E3B00630019 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				22D0ED8813991E4000630019 /* MainWindow-iPad.xib */,
+				22D0ED8B1399217F00630019 /* MainView-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		22E64EE213952D4800196D29 /* PfhObjIAX */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +810,7 @@
 				22E64EF013952D7F00196D29 /* IAXCall.h in Headers */,
 				22E64EF113952D7F00196D29 /* Phonefromhere.h in Headers */,
 				22E64EF213952D7F00196D29 /* IAXFrame.h in Headers */,
+				22C8D78213AF4DFB00D4DDC5 /* IAXNSLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +909,8 @@
 				221BEDEC137B073000AFB367 /* MainWindow.xib in Resources */,
 				221BEDF1137B073000AFB367 /* MainView.xib in Resources */,
 				221BEDF6137B073000AFB367 /* FlipsideView.xib in Resources */,
+				22D0ED8A13991E4000630019 /* MainWindow-iPad.xib in Resources */,
+				22D0ED8C1399217F00630019 /* MainView-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +1007,7 @@
 				22E64EEC13952D6200196D29 /* Phonefromhere.m in Sources */,
 				22E64EED13952D6200196D29 /* IAXFrameIn.m in Sources */,
 				22E64EEE13952D6200196D29 /* IAXFrameOut.m in Sources */,
+				22C8D78313AF4DFB00D4DDC5 /* IAXNSLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1046,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		22D0ED8813991E4000630019 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22D0ED8913991E4000630019 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1030,7 +1062,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_CONFIG_H;
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = HAVE_CONFIG_H;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1074,6 +1106,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1095,6 +1128,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1106,10 +1140,12 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/iosaudio.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iosaudio/iosaudio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1126,6 +1162,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iosaudio/iosaudio-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";

@@ -25,13 +25,14 @@
 #import "Phonefromhere.h"
 
 @implementation Phonefromhere
-@synthesize host, port;
+@synthesize host, port, version;
 
 - init {
     self = [super init];
     if (self) {
         calls = [[NSMutableDictionary alloc] init];
         audios = [[NSMutableDictionary alloc] init];
+        version = @"1.3 12/12/2011";
     }
     return self;
 }
@@ -81,7 +82,7 @@
 
 - (void)rcvLoop{
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSLog(@"in rcv thread");
+	IAXLog(LOGDEBUG,@"in rcv thread");
     uint8_t *rcvbuff;
     NSMutableData *rb = [NSMutableData dataWithLength:1024]; 
     NSTimeInterval ntv = 0.01;
@@ -119,21 +120,20 @@
     /* Create our socket */
     if ( ( sock = socket(AF_INET, SOCK_DGRAM,0)) < 0 )
     {
-        NSLog(@"socket failed") ;
-        perror("socket");
+        IAXLog(LOGERROR,@"socket failed") ;
+        //perror("socket");
     } else {
-        NSLog(@"socket created") ;
+        IAXLog(LOGDEBUG,@"socket created") ;
         
         if (0 == (connect(sock, (struct sockaddr *)&sock_addr,sizeof(sock_addr)))){
-            NSLog(@"socket connected to host %@ at %d ",host,port) ;
+            IAXLog(LOGDEBUG,@"socket connected to host %@ at %d ",host,port) ;
             ipv4Soc = sock;
             struct timeval tv;
             tv.tv_sec = 0;
             tv.tv_usec = 5000; // 5ms 
             setsockopt(ipv4Soc,SOL_SOCKET,SO_RCVTIMEO,&tv, sizeof(tv));
         } else {
-            NSLog(@"connect failed to host %@ at %d ",host,port) ;
-            perror("connect");
+            IAXLog(LOGERROR,@"connect failed to host %@ at %d ",host,port) ;
         }
     }	
 
@@ -177,14 +177,14 @@
 - (void) addAudioCall:(id) icall{
     IAXCall * call = (IAXCall *)icall;
     [audios setObject:call forKey:[NSNumber numberWithInteger:[call destNo]]];
-    NSLog(@"Adding call with destNo of %d ",[call destNo]) ;
+    IAXLog(LOGDEBUG,@"Adding call with destNo of %d ",[call destNo]) ;
 }
 
 - (void) doCall:(id) icall{
     IAXCall * call = (IAXCall *)icall;
     //[calls insertObject:call atIndex:[call srcNo]];
     [calls setObject:call forKey:[NSNumber numberWithInteger:[call srcNo]]];
-    NSLog(@"Adding call with srcNo of %d ",[call srcNo]) ;
+    IAXLog(LOGDEBUG,@"Adding call with srcNo of %d ",[call srcNo]) ;
 
     [call sendNew];
 }
@@ -206,14 +206,14 @@
 
 - (void)hungupCall: (IAXCall *)call cause:(NSString *)reason code:(NSNumber *)code {
     [calls removeObjectForKey:[NSNumber numberWithInteger:[call srcNo]]];
-    NSLog(@"Call %d hung up because : %@ (%d)\n",[call srcNo],reason,code) ;
+    IAXLog(LOGDEBUG,@"Call %d hung up because : %@ (%d)\n",[call srcNo],reason,code) ;
     [call cleanUp];
 }
 // main loop thread callable
 
 - (uint16_t) mkCallNo{
     uint16_t cn;
-    SecRandomCopyBytes (kSecRandomDefault,sizeof(cn),&cn);
+    SecRandomCopyBytes (kSecRandomDefault,sizeof(cn),(uint8_t *)&cn);
     cn &= 0x7fff;
     // should really test this doesn't exist - but since we only support a single call
     // at the moment I don't care.
@@ -226,7 +226,7 @@
     [call setSrcNo:0];
     [call setRunner:self];
     [calls setObject:call forKey:[NSNumber numberWithInteger:[call srcNo]]];
-    NSLog(@"Adding call with srcNo of %d ",[call srcNo]) ;
+    IAXLog(LOGERROR,@"Adding call with srcNo of %d ",[call srcNo]) ;
 }
 
 - (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten forceCodec:(NSString *)codec statusListener:(id<callStatusListener>)statusListener {
