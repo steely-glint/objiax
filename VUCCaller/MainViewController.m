@@ -3,8 +3,21 @@
 //  VUCCaller
 //
 //  Created by Tim Panton on 11/05/2011.
-//  Copyright 2011 phonefromhere.com. All rights reserved.
-//
+//  Copyright 2011 phonefromhere.com. 
+
+/* Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
 #import "MainViewController.h"
 
@@ -18,9 +31,7 @@
     log = [[NSMutableString alloc] init ];
     nsr = [[Phonefromhere alloc] init];
     call = nil;
-    //[nsr setHost: @"ss10.westhawk.co.uk"];
-    //nsr setHost: @"api.phonefromhere.com"];
-    [nsr setHost:@"at.virtual-universe.net"];
+    [nsr setHost: @"api.phonefromhere.com"];
     
 
 
@@ -55,15 +66,7 @@
 
 - (IBAction)pushBut{  
     if (call == nil){
-        //call = [nsr newCall:@"android" pass:@"marvin" exten:@"4000" statusListener:self];
-
-        //call = [nsr newCall:@"android" pass:@"marvin" exten:@"2000" statusListener:self];
-        //call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" forceCodec:nill statusListener:self];
-    call = [nsr newCall:@"droidtest" pass:@"sbestus52" exten:@"01234640349" forceCodec:@"SPEEX" statusListener:self];        
-
-        //[nsr newCall:@"iosTest" pass:@"spreektotmij" exten:@"200901" statusListener:self];
-
-
+        call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" forceCodec:@"G722" statusListener:self];
     } else {
         [call hangup];
     }
@@ -71,14 +74,14 @@
 
 - (IBAction)mute{  
     if (call != nil){
-        //[call sendDtmf:@"*6*"];
-        [call sendDtmf:@"1"];
+        [call sendDtmf:@"*6*"];
+        //[call sendDtmf:@"1"];
 
     }
 }
 - (IBAction)pinSend{  
     if (call != nil){
-        [call sendDtmf:@"74666#"];
+        [call sendDtmf:@""];
     }
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
