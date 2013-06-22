@@ -34,7 +34,7 @@
     setIAXLogLevel(LOGDEBUG);
     nsr = [[Phonefromhere alloc] init];
     call = nil;
-    [nsr setHost: @"api.phonefromhere.com"];
+    [nsr setHost: @"gont.westhawk.co.uk"];
     [nsr setPort: 4569];
     [nsr startIAX];
     [self addText: @"started \n"];
@@ -66,7 +66,7 @@
 
 - (IBAction)pushBut{  
     if (call == nil){
-        call = [nsr newCall:@"zdx" pass:@"showboat" exten:@"200901" forceCodec:@"G722" statusListener:self];
+        call = [nsr newCall:@"ios" pass:@"FordPrefect" exten:@"500" forceCodec:@"SPEEX" statusListener:self];
     } else {
         [call hangup];
     }
@@ -74,12 +74,12 @@
 
 - (IBAction)mute{  
     if (call != nil){
-        [call sendDtmf:@"*6*"];
+        [call sendDtmf:@"5"];
     }
 }
 - (IBAction)pinSend{  
     if (call != nil){
-        [call sendDtmf:@""];
+        [call sendDtmf:@"1"];
     }
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
