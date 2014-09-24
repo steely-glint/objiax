@@ -51,6 +51,7 @@
 		223A224B13815297000B2166 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224913815297000B2166 /* AudioToolbox.framework */; };
 		223A224E13815306000B2166 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224D13815306000B2166 /* CoreAudio.framework */; };
 		223A862413952DEE002E4E90 /* libPfhObjIAX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E64EE013952D4700196D29 /* libPfhObjIAX.a */; };
+		22400AA519D2D2370091464D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22400AA419D2D2370091464D /* AVFoundation.framework */; };
 		22A65E01137ED1F600FB4644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		22A65E09137ED25D00FB4644 /* AudioDataConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E08137ED25D00FB4644 /* AudioDataConsumer.h */; };
 		22A65E60137ED67C00FB4644 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E0C137ED67C00FB4644 /* _kiss_fft_guts.h */; };
@@ -244,6 +245,7 @@
 		223E2C4F137AFF3600A983F3 /* ProtocolTestTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProtocolTestTests-Prefix.pch"; sourceTree = "<group>"; };
 		223E2C50137AFF3600A983F3 /* ProtocolTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtocolTestTests.h; sourceTree = "<group>"; };
 		223E2C52137AFF3600A983F3 /* ProtocolTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProtocolTestTests.m; sourceTree = "<group>"; };
+		22400AA419D2D2370091464D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2257CDCA115E508400E030A5 /* IEData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEData.h; sourceTree = "<group>"; };
 		2257CDCB115E508400E030A5 /* IEData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IEData.m; sourceTree = "<group>"; };
 		228AECED13951A92008FCE71 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -362,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22400AA519D2D2370091464D /* AVFoundation.framework in Frameworks */,
 				223A862413952DEE002E4E90 /* libPfhObjIAX.a in Frameworks */,
 				22C4AA5F138682A1005C1E19 /* Security.framework in Frameworks */,
 				223A224E13815306000B2166 /* CoreAudio.framework in Frameworks */,
@@ -429,6 +432,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22400AA419D2D2370091464D /* AVFoundation.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				223E2C24137AFF3500A983F3 /* UIKit.framework */,
 				223E2C27137AFF3500A983F3 /* CoreGraphics.framework */,

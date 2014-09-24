@@ -66,7 +66,7 @@
 
 - (IBAction)pushBut{  
     if (call == nil){
-        call = [nsr newCall:@"ios" pass:@"FordPrefect" exten:@"500" forceCodec:@"SPEEX" statusListener:self];
+        call = [nsr newCall:@"ios" pass:@"FordPrefect" exten:@"600" forceCodec:@"SPEEX" statusListener:self];
     } else {
         [call hangup];
     }
