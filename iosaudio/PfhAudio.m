@@ -50,6 +50,7 @@ static int frameIntervalMS = 20;
 
 
 @implementation PfhAudio
+@synthesize outEnergy ,inEnergy ;
 
 
 - (id) init {
@@ -376,7 +377,7 @@ static OSStatus outRender(
     err = AudioUnitSetProperty(vioUnitMic, kAudioOutputUnitProperty_SetInputCallback, kAudioUnitScope_Global, 1, &inRenderProc, sizeof(inRenderProc));
     if (err != 0) { NSLog(@"Error with %@ - %ld",@"kAudioUnitProperty_SetRenderCallback Mic",err); return;}
     
-    [self setSampleRate:8000];
+    [self setSampleRate:[codec getRate]];
 
     
     
@@ -434,7 +435,7 @@ static OSStatus outRender(
     int64_t get = getIn;
     int64_t avail  = putIn - get;
     //NSLog(@"avail = %qd",avail);
-    int64_t count = 0;
+    //int64_t count = 0;
     if (avail >= aframeLen) {
         // got enough to send a packet
         //NSLog(@"taken = %d get=%qd put=%qd count=%qd",aframeLen,getIn,putIn,count );
