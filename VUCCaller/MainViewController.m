@@ -34,7 +34,7 @@
     setIAXLogLevel(LOGDEBUG);
     nsr = [[Phonefromhere alloc] init];
     call = nil;
-    [nsr setHost: @"gont.westhawk.co.uk"];
+    [nsr setHost: @"146.148.121.175"];
     [nsr setPort: 4569];
     [nsr startIAX];
     [self addText: @"started \n"];
@@ -125,7 +125,7 @@
 - (void) showStatusChanged:(NSString *) detail{
     if (call != nil) {        
         NSInteger state = [call state];
-        IAXLog(LOGDEBUG,@"Status change to %d - detail is %@",state,detail);
+        IAXLog(LOGDEBUG,@"Status change to %ld - detail is %@",(long)state,detail);
         switch (state) {
             case kIAXCallStateINITIAL:
                 [botBut setEnabled:YES];

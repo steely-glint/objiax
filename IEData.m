@@ -73,7 +73,7 @@
 			int itret = 0;
 			itret = (*data << 8 ) |  *(data+1);
 			ret = [NSNumber numberWithInt: itret];
-            IAXLog(LOGIAX,@"got AuthMethosd is value = %d length = %d\n",itret,len);
+            IAXLog(LOGIAX,@"got AuthMethosd is value = %d length = %ld\n",itret,(long)len);
 			break;
 		}
             // ints
@@ -81,7 +81,7 @@
             uint32_t itret = 0;
             itret = (*data << 24 ) |  *(data+1) << 16 | *(data+2) << 8 | *(data+3);
 			ret = [NSNumber numberWithInt: itret];
-            IAXLog(LOGIAX,@"got int of value = %d length = %d\n",itret,len);
+            IAXLog(LOGIAX,@"got int of value = %d length = %ld\n",itret,(long)len);
             break;
         }
 // strings
@@ -109,7 +109,7 @@
 	uint8_t * buff, *p, *end, *iep;
 	id 	ret = nil;
 	iep = NULL;
-	int len = [rawData length];
+	int len = (int)[rawData length];
 	buff = (uint8_t *) [rawData bytes];
 	p = buff;
 	end = p + len;

@@ -120,7 +120,7 @@ is interpreted as a simple 7-bit unsigned integer.
 int retryintervals [] = {100,200,400,800,1600,3200};
 
 - (uint8_t *) dataBytes{
-	return (uint8_t *) [self.frameData mutableBytes];
+	return (uint8_t *) [(NSMutableData *)self.frameData mutableBytes];
 }
 - (IAXFrameOut *) initFull {
 	frameData = [[NSMutableData alloc] initWithLength:12];
@@ -230,7 +230,7 @@ int retryintervals [] = {100,200,400,800,1600,3200};
         retryCount++;
         [self setRetryFrame:YES];
         retryDue = now + retryintervals[retryCount];
-        IAXLog(LOGDEBUG,@"Retry %d for %d due at %d",retryCount,[self getOsq],retryDue);
+        IAXLog(LOGDEBUG,@"Retry %ld for %d due at %d",(long)retryCount,[self getOsq],retryDue);
         ret = YES;
     }
     return ret;

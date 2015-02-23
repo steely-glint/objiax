@@ -135,7 +135,7 @@ NSString * pcFrameSubClasses[] = {
 	return ret;
 }
 - (NSString *)getFrameTypeName{
-    int ft = [self getFrameType];
+    int ft = (int)[self getFrameType];
     if ((ft > 12) || (ft < 0)){ ft = 0;}
     return [NSString stringWithFormat:@"%@ - %d",frameTypes[ft], ft];
 }
@@ -157,8 +157,8 @@ NSString * pcFrameSubClasses[] = {
 }
 
 - (NSString *)getSubClassName{
-    int ft = [self getFrameType];
-    int sc = [self getSubClass];
+    int ft = (int)[self getFrameType];
+    int sc = (int)[self getSubClass];
     NSString * ms;
     
     switch (ft){
@@ -185,17 +185,17 @@ NSString * pcFrameSubClasses[] = {
 }
 - (void) dumpFrame:(NSString *) prompt {
     NSMutableString *prt = [[NSMutableString alloc] initWithString:prompt];
-    [prt appendFormat:@"ts=%d ",[self getTimeStamp]];
+    [prt appendFormat:@"ts=%lu ",(unsigned long)[self getTimeStamp]];
     if ([self isMiniFrame]==YES){
         [prt appendString:@"Mini "];
-        [prt appendFormat:@"s=%d ",[self getSourceCall]];
+        [prt appendFormat:@"s=%ld ",(long)[self getSourceCall]];
     } else {
-        [prt appendFormat:@"s=%d d=%d ",[self getSourceCall],[self getDestinationCall]];
+        [prt appendFormat:@"s=%ld d=%ld ",(long)[self getSourceCall],(long)[self getDestinationCall]];
         [prt appendFormat:@"i=%d o=%d ",[self getIsq],[self getOsq]];
         [prt appendFormat:@"%@",[self isRetryFrame]==YES?@"Retry ":@""];
         [prt appendFormat:@"%@ ",[self getFrameDescription]];
     }
-    [prt appendFormat:@"pl=%d\n",[[self getPayload] length]];
+    [prt appendFormat:@"pl=%lu\n",(unsigned long)[[self getPayload] length]];
     IAXLog(LOGIAX,@"%@",prt);
     [prt release];
 }

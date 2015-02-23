@@ -187,7 +187,7 @@ static int frameIntervalMS = 20;
         memset([din mutableBytes],0,aframeLen*2);
     }
     int16_t *rp =  ringOut;
-    int len = ringOutsz;
+    int len = (int)ringOutsz;
     int64_t put = putOut;
     if (firstOut) {
         firstOut = NO;
@@ -209,10 +209,10 @@ static int frameIntervalMS = 20;
     long diff = (stamp -ostamp);
     
     if ((diff < 0) && (diff > -2000)){
-        NSLog(@"out of order %d > %d",ostamp , stamp);
+        NSLog(@"out of order %ld > %ld",(long)ostamp , (long)stamp);
     }
     if ((diff > 20) && (diff < 2000)) {
-        NSLog(@"Missing packet ? %d -> %d",ostamp , stamp);
+        NSLog(@"Missing packet ? %ld -> %ld",(long)ostamp , (long)stamp);
     }
     ostamp = stamp;
     putOut = put;
@@ -255,7 +255,7 @@ static OSStatus inRender(
     if (err) { printf("inRender: error %d\n", (int)err); return err; }
     
     int16_t *rp = myself->ringIn;
-    int len = myself->ringInsz;
+    int len = (int) (myself->ringInsz);
     int64_t put = myself->putIn;
     int off = 0;
     for(UInt32 i = 0; i < ioData->mNumberBuffers; ++i){
@@ -294,7 +294,7 @@ static OSStatus outRender(
         NSLog(@" No data to be sent to speaker - filling with silence %qd %qd",get,put);
         
     } else {
-        int len = myself ->ringOutsz;
+        int len = (int) (myself ->ringOutsz);
         int off = 0;
         int16_t *rp = myself->ringOut;
         
@@ -315,10 +315,10 @@ static OSStatus outRender(
         //NSLog(@" data sent to speaker %d",samples);
 
         if (inNumberFrames != (get -  myself->getOut)){
-            NSLog(@" out problem with counting %ld != %qd", inNumberFrames , (get -  myself->getOut));
+            NSLog(@" out problem with counting %u != %qd", (unsigned int)inNumberFrames , (get -  myself->getOut));
         }
         if (ioData->mNumberBuffers != 1){
-            NSLog(@" out problem with number of buffers %ld", ioData->mNumberBuffers);
+            NSLog(@" out problem with number of buffers %u", (unsigned int)ioData->mNumberBuffers);
             
         }
         myself->getOut = get;
@@ -354,7 +354,7 @@ static OSStatus outRender(
                                                                   );
     
     err = AudioComponentInstanceNew (foundIoUnitReference,&vioUnitSpeak);
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"AudioComponentInstanceNew",err); return;}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioComponentInstanceNew",(int)err); return;}
     memcpy (&vioUnitMic,&vioUnitSpeak,sizeof(vioUnitSpeak));
     
     /*err = AudioComponentInstanceNew (foundIoUnitReference,&vioUnitMic);
@@ -365,19 +365,19 @@ static OSStatus outRender(
     
     UInt32 one = 1;
     err = AudioUnitSetProperty(vioUnitMic, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &one, sizeof(one));
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"kAudioOutputUnitProperty_EnableIO mic",err); return;}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"kAudioOutputUnitProperty_EnableIO mic",(int)err); return;}
     
     err = AudioUnitSetProperty(vioUnitSpeak, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &one, sizeof(one));
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"kAudioOutputUnitProperty_EnableIO speak",err); return;}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"kAudioOutputUnitProperty_EnableIO speak",(int)err); return;}
     
     
     err = AudioUnitSetProperty(vioUnitSpeak, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Output, 0, &outRenderProc, sizeof(outRenderProc));
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"kAudioUnitProperty_SetRenderCallback Speak",err); return;}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"kAudioUnitProperty_SetRenderCallback Speak",(int)err); return;}
     
     err = AudioUnitSetProperty(vioUnitMic, kAudioOutputUnitProperty_SetInputCallback, kAudioUnitScope_Global, 1, &inRenderProc, sizeof(inRenderProc));
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"kAudioUnitProperty_SetRenderCallback Mic",err); return;}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"kAudioUnitProperty_SetRenderCallback Mic",(int)err); return;}
     
-    [self setSampleRate:[codec getRate]];
+    [self setSampleRate:(int)[codec getRate]];
 
     
     
@@ -449,7 +449,7 @@ static OSStatus outRender(
             get += aframeLen;
         } else {
             int16_t *audio = alloca(aframeLen*2);
-            int len = ringInsz;
+            int len = (int) ringInsz;
             double energy = 0.0;
             for (int i=0;i<aframeLen;i++){
                 int offs = get % len;
@@ -486,7 +486,7 @@ static OSStatus outRender(
     memset(ringOut,0,sizeof(ringOut));
     
     err = AudioOutputUnitStart(vioUnitSpeak);
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"AudioOutputUnitStart Speak",err);}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStart Speak",(int)err);}
     stopped = NO;
 }
 
@@ -496,7 +496,7 @@ static OSStatus outRender(
     
     //AudioOutputUnitStop(vioUnitMic);
     err =  AudioOutputUnitStop(vioUnitSpeak);
-    if (err != 0) { NSLog(@"Error with %@ - %ld",@"AudioOutputUnitStop Speak",err);}
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
     
     stopped = YES;
 }

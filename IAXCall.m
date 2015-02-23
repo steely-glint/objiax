@@ -93,7 +93,7 @@ uint64_t getTime () {
     return ret;
 }
 - (void) changeState:(NSInteger) newState detail:(NSString *) cause{
-    IAXLog(LOGDEBUG, @"Call %d state change from %@ to %@",srcNo,[self stateName:state],[self stateName:newState]);
+    IAXLog(LOGDEBUG, @"Call %ld state change from %@ to %@",(long)srcNo,[self stateName:state],[self stateName:newState]);
     state = newState;
     [statusListener callStatusChanged:cause];
 }
@@ -156,15 +156,15 @@ uint64_t getTime () {
     
 
 - (void) ackedTo:(NSInteger) upto{
-    // check list for 'uptos' in the sent list 
+    // check list for 'uptos' in the sent list
     // range is our lack to upto     
-    int poss = upto - lack;
+    NSInteger poss = upto - lack;
     if ( poss > 0){
-        int o;
-        IAXLog(LOGDEBUG,@"Acking from %d  upto %d",lack,upto);
+        NSInteger o;
+        IAXLog(LOGDEBUG,@"Acking from %ld  upto %ld",(long)lack,(long)upto);
         
         for(o=lack;o<upto;o++){
-            NSNumber * num = [NSNumber numberWithInt:o];
+            NSNumber * num = [NSNumber numberWithInteger:o];
             IAXFrameOut *ob = [sentFullFrames objectForKey:num];
             if (ob != nil){
                 [ob dumpFrame:@"Acked this "];
@@ -175,7 +175,7 @@ uint64_t getTime () {
         lack = upto;
     } else if (poss < -250){
         // wrapped.
-        IAXLog(LOGDEBUG,@"Full frame seqno wrapped - want to Ack from %d  upto %d",lack,upto);
+        IAXLog(LOGDEBUG,@"Full frame seqno wrapped - want to Ack from %ld  upto %ld",(long)lack,(long)upto);
 
         [self ackedTo:256];
         lack=0;
@@ -220,7 +220,7 @@ uint64_t getTime () {
         uint32_t now = [self getTimeStampNow];
         
         if (NO == [full setNextRetryTime:now] ){
-            IAXLog(LOGDEBUG,@"Giving up on %d srcNo timeout of %@ ",srcNo,[full getOsq]);
+            IAXLog(LOGDEBUG,@"Giving up on %ld srcNo timeout of %hhu ",(long)srcNo,[full getOsq]);
             [audio stop];
             [runner hungupCall:self cause:@"timeout" code:0 ];
         }
@@ -322,8 +322,8 @@ void hexDump(NSData *blob){
     char * result = alloca(16);
     // perform the outer MD5
     CC_MD5_Init( &md5Context);
-    CC_MD5_Update( &md5Context, cbytes, clength );
-    CC_MD5_Update( &md5Context, pbytes, plength );
+    CC_MD5_Update( &md5Context, cbytes, (int)clength );
+    CC_MD5_Update( &md5Context, pbytes, (int)plength );
     CC_MD5_Final( (void*)result, &md5Context);
     NSMutableString *repl = [[NSMutableString alloc] init ];
     for (int i=0;i<16;i++){
@@ -336,7 +336,7 @@ void hexDump(NSData *blob){
     IEData * ied = [IEData alloc];
     [ied setRawData:payload];
     [ied addIETypeWithString:IAXIETypeMd5result value:repl];
-    IAXLog(LOGDEBUG,@"Call %d sending pass = %s AuthRep with %@\n",srcNo,pbytes,repl);
+    IAXLog(LOGDEBUG,@"Call %ld sending pass = %s AuthRep with %@\n",(long)srcNo,pbytes,repl);
 
     [repF setPayload:payload];
     [self sendFullFrame:repF];
@@ -371,13 +371,13 @@ void hexDump(NSData *blob){
     [audio consumeWireData:pay time:st];
 }
 - (void) gotDTMFFrame:(IAXFrameIn*) frame{
-    IAXLog(LOGDEBUG,@"Call %d ignoring (for now) frame type %@\n",srcNo,[frame getFrameDescription]);
+    IAXLog(LOGDEBUG,@"Call %ld ignoring (for now) frame type %@\n",(long)srcNo,[frame getFrameDescription]);
 }
 - (void) gotTextFrame:(IAXFrameIn*) frame{
     NSMutableData *md = [NSMutableData dataWithData:[frame getPayload]];
     [md setLength:[md length]+1];
     NSString *s = [NSString stringWithUTF8String:[md bytes]];
-    IAXLog(LOGDEBUG,@"Call %d got text frame type %@",srcNo, s);
+    IAXLog(LOGDEBUG,@"Call %ld got text frame type %@",(long)srcNo, s);
     if (statusListener != nil){
         [statusListener recvdText:s];
     }
@@ -386,7 +386,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
     IAXLog(LOGERROR,@"Protocol mixup - wrong state to get %@ ",[frame getFrameDescription]);
 }
 - (void) gotControlFrame:(IAXFrameIn*) frame{
-    IAXLog(LOGDEBUG,@"Call %d ignoring (for now) frame type %@\n",srcNo,[frame getFrameDescription]);
+    IAXLog(LOGDEBUG,@"Call %ld ignoring (for now) frame type %@\n",(long)srcNo,[frame getFrameDescription]);
     switch ([frame getSubClass]) {
         case IAXControlFrameTypeAnswer:
             // state Linked -> Up
@@ -443,7 +443,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
 }
 
 -(void) gotPCF:(IAXFrameIn *) pcf{
-    IAXLog(LOGDEBUG,@"Call %d got Protocol Control frame class %@\n",srcNo,[pcf getFrameDescription]);
+    IAXLog(LOGDEBUG,@"Call %ld got Protocol Control frame class %@\n",(long)srcNo,[pcf getFrameDescription]);
     IEData * ied = [IEData alloc];
     [ied setRawData:[NSMutableData dataWithData:[pcf getPayload]]];
     //hexDump([pcf getPayload]);
@@ -534,7 +534,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
     uint16_t stamp = [frame getTimeStamp];
     int wrapdiff = 2<<14;
     
-    int32_t v = roc; // default assumption
+    NSInteger v = roc; // default assumption
     
     // detect wrap(s)
     int diff = stamp - s_l; // normally we expect this to be 20
@@ -553,13 +553,13 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
     if (v < 0) {
         v = 0; // trap odd initial cases
     }
-    int32_t low = (int32_t) stamp;
-    int32_t high = (v << 16);
+    NSInteger low =  stamp;
+    NSInteger high = (v << 16);
     s_l = stamp;
     roc = v;
     NSInteger ret = low | high;
     if (diff != 20) {
-        IAXLog(LOGDEBUG,@"diff != 20 %d %d - %d (new roc %d) returning %d",diff,stamp , s_l, roc,ret);
+        IAXLog(LOGDEBUG,@"diff != 20 %d %d - %d (new roc %ld) returning %ld",diff,stamp , s_l, (long)roc,(long)ret);
     }
     return ret;
     
@@ -576,13 +576,13 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
         [frame dumpFrame:@"<- "];
         if (destNo > 1) {
             if ([frame getSourceCall] != destNo){
-                [frame dumpFrame:[NSString stringWithFormat:@"Discarding srcNo does not match %d this:", destNo]];
+                [frame dumpFrame:[NSString stringWithFormat:@"Discarding srcNo does not match %ld this:", (long)destNo]];
                 return; // I hate early returns.
             }
         } else {
             // assume that was our first reply so take a note
             destNo = [frame getSourceCall];
-            IAXLog(LOGDEBUG,@"Setting our destNo to  %d \n", destNo);
+            IAXLog(LOGDEBUG,@"Setting our destNo to  %ld \n", (long)destNo);
         }
         // house keeping for all full frames
         [self ackedTo:[frame getIsq]];
@@ -611,16 +611,16 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
                         [self gotControlFrame:frame];
                         break;
                     default:
-                        IAXLog(LOGDEBUG,@"Call %d ignoring (for now) frame type %@\n",srcNo,[frame getFrameTypeName]);
+                        IAXLog(LOGDEBUG,@"Call %ld ignoring (for now) frame type %@\n",(long)srcNo,[frame getFrameTypeName]);
                 }
                 if ([frame mustSendAck]){
                     [self sendAck:frame];
                 }
             } else {
-                IAXLog(LOGDEBUG,@"Missed frame - should VNAK %d %d ",iseq , farOsq);
+                IAXLog(LOGDEBUG,@"Missed frame - should VNAK %d %ld ",iseq , (long)farOsq);
             }
         } else {
-            IAXLog(LOGDEBUG,@"Back in time %d %d ?" , iseq , farOsq);
+            IAXLog(LOGDEBUG,@"Back in time %d %ld ?" , iseq , (long)farOsq);
         }
     }
 }

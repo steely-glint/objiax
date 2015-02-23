@@ -44,7 +44,7 @@ kiss_fftr_cfg kiss_fftr_alloc(int nfft,int inverse_fft,void * mem,size_t * lenme
     memneeded = sizeof(struct kiss_fftr_state) + subsize + sizeof(kiss_fft_cpx) * ( nfft * 2);
 
     if (lenmem == NULL) {
-        st = (kiss_fftr_cfg) KISS_FFT_MALLOC (memneeded);
+        st = (kiss_fftr_cfg) KISS_FFT_MALLOC ((int)memneeded);
     } else {
         if (*lenmem >= memneeded)
             st = (kiss_fftr_cfg) mem;

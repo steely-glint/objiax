@@ -84,7 +84,7 @@
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    IAXLog(LOGDEBUG,@"Failed with %d ",[error code]);
+    IAXLog(LOGDEBUG,@"Failed with %ld ",[error code]);
 
 }
 

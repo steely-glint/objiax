@@ -30,7 +30,7 @@
 }
 
 - (BOOL) decode:(NSData *)wireData audioData:(NSMutableData *)audioData{
-    int len = [wireData length];
+    int len = (int) [wireData length];
 
     int count=0;
     [audioData setLength:(len*2)];
@@ -45,7 +45,7 @@
 
 
 - (BOOL) encode:(NSData *)audioData wireData:(NSMutableData *)wireData{
-    int len = [audioData length]/2;
+    int len = (int)[audioData length]/2;
     int count = len;
     [wireData setLength:len];
     uint8_t * wire = (uint8_t *) [wireData mutableBytes];

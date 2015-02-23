@@ -89,7 +89,7 @@
     while (ipv4Soc > 0){
         [rb setLength:1024];
         rcvbuff = [rb mutableBytes];
-        int got = recv(ipv4Soc,rcvbuff,1024,0);
+        int got = (int) recv(ipv4Soc,rcvbuff,1024,0);
         if (got > 4) {
             //NSLog(@"datagram of size %d",got);
 
@@ -177,14 +177,14 @@
 - (void) addAudioCall:(id) icall{
     IAXCall * call = (IAXCall *)icall;
     [audios setObject:call forKey:[NSNumber numberWithInteger:[call destNo]]];
-    IAXLog(LOGDEBUG,@"Adding call with destNo of %d ",[call destNo]) ;
+    IAXLog(LOGDEBUG,@"Adding call with destNo of %ld ",(long)[call destNo]) ;
 }
 
 - (void) doCall:(id) icall{
     IAXCall * call = (IAXCall *)icall;
     //[calls insertObject:call atIndex:[call srcNo]];
     [calls setObject:call forKey:[NSNumber numberWithInteger:[call srcNo]]];
-    IAXLog(LOGDEBUG,@"Adding call with srcNo of %d ",[call srcNo]) ;
+    IAXLog(LOGDEBUG,@"Adding call with srcNo of %ld ",(long)[call srcNo]) ;
 
     [call sendNew];
 }
@@ -197,7 +197,7 @@
 
 
      */
-    int e = send(ipv4Soc,[nsd bytes],[nsd length],0);
+    int e = (int)send(ipv4Soc,[nsd bytes],[nsd length],0);
     
     //NSLog(@"sending frame of %d ",[nsd length]) ;
 
@@ -206,7 +206,7 @@
 
 - (void)hungupCall: (IAXCall *)call cause:(NSString *)reason code:(NSNumber *)code {
     [calls removeObjectForKey:[NSNumber numberWithInteger:[call srcNo]]];
-    IAXLog(LOGDEBUG,@"Call %d hung up because : %@ (%d)\n",[call srcNo],reason,code) ;
+    IAXLog(LOGDEBUG,@"Call %ld hung up because : %@ (%@)\n",(long)[call srcNo],reason,code) ;
     [call cleanUp];
 }
 // main loop thread callable
@@ -226,7 +226,7 @@
     [call setSrcNo:0];
     [call setRunner:self];
     [calls setObject:call forKey:[NSNumber numberWithInteger:[call srcNo]]];
-    IAXLog(LOGERROR,@"Adding call with srcNo of %d ",[call srcNo]) ;
+    IAXLog(LOGERROR,@"Adding call with srcNo of %ld ",(long)[call srcNo]) ;
 }
 
 - (IAXCall *) newCall:(NSString *)user pass:(NSString *)pass exten:(NSString *)exten forceCodec:(NSString *)codec statusListener:(id<callStatusListener>)statusListener {

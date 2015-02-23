@@ -56,7 +56,7 @@
     uint8_t * wire = (uint8_t *) [wireData bytes];
     int16_t *audio = (int16_t *) [audioData mutableBytes];
     speex_bits_reset(&dBits);
-    speex_bits_read_from(&dBits, (char *) wire,[wireData length]);
+    speex_bits_read_from(&dBits, (char *) wire,(int)[wireData length]);
     speex_decode_int(decoder_st, &dBits, audio);
     return YES;
 }
