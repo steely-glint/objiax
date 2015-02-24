@@ -118,7 +118,11 @@ static int frameIntervalMS = 20;
              object:nil];
     */
     
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&setError ];
+
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord
+             //withOptions:AVAudioSessionCategoryOptionMixWithOthers
+                   error:&setError ];
     if (setError){
         IAXLog(LOGERROR,@"setCategoryError");
         setError = nil;
@@ -165,7 +169,17 @@ static int frameIntervalMS = 20;
     
     
 }
-
+- (void) stopAudioSession{
+    NSError *setError = nil;
+    
+    // implicitly initializes your audio session
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:NO error:&setError];
+    if (setError){
+        IAXLog(LOGERROR,@"setActive");
+        setError = nil;
+    }
+}
 
 
 - (NSArray *) listCodecs{
@@ -425,6 +439,7 @@ static OSStatus outRender(
     wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
     [self setupAudio];
     [audioRunLoop run];
+    [self stopAudioSession];
     [pool release];
     [NSThread exit];
 }
@@ -496,8 +511,9 @@ static OSStatus outRender(
     
     //AudioOutputUnitStop(vioUnitMic);
     err =  AudioOutputUnitStop(vioUnitSpeak);
+    //AudioComponentInstanceDispose(vioUnitSpeak);
+
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
-    
     stopped = YES;
 }
 - (void) setWireConsumer:(id <AudioDataConsumer>)w {
