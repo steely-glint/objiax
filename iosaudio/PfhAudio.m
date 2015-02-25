@@ -71,6 +71,8 @@ static int frameIntervalMS = 20;
     muted = NO;
     currentDigitDuration = 0;
     //[self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
+    //[self avAudioSessionStuff];
+
     return self;
 }
 
@@ -106,17 +108,17 @@ static int frameIntervalMS = 20;
 
 - (void) avAudioSessionStuff{
     NSError *setError = nil;
-
+    
+    
     // implicitly initializes your audio session
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-   /*
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self
-           selector:@selector(audioRootChangedNote)
-               name:AVAudioSessionRouteChangeNotification
-             object:nil];
-    */
+    /*
+     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+     [nc addObserver:self
+     selector:@selector(audioRootChangedNote)
+     name:AVAudioSessionRouteChangeNotification
+     object:nil];
+     */
     
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&setError ];
     if (setError){
@@ -129,21 +131,15 @@ static int frameIntervalMS = 20;
         IAXLog(LOGERROR,@"setModeError");
         setError = nil;
     }
-	
-    AVAudioSessionRouteDescription *avr = [session currentRoute];
-    for(AVAudioSessionPortDescription *port in avr.outputs) {
-        IAXLog(LOGDEBUG,@"AUDIO_OUTPUT IS NOW: %@",port.portType);
-    }
-    for(AVAudioSessionPortDescription *port in avr.inputs) {
-        IAXLog(LOGDEBUG,@"AUDIO_INPUT IS NOW: %@",port.portType);
-    }
-
-        
-    Float64 preferredSampleRate = [codec getRate]; // try and get the hardware to resample
-    [session setPreferredSampleRate:preferredSampleRate error:&setError];
-    if (setError){
-        IAXLog(LOGERROR,@"setPreferredSampleRateError");
-        setError = nil;
+    
+    if ([AVAudioSession respondsToSelector:@selector(currentRoute)]){
+        AVAudioSessionRouteDescription *avr = [session currentRoute];
+        for(AVAudioSessionPortDescription *port in avr.outputs) {
+            IAXLog(LOGDEBUG,@"AUDIO_OUTPUT IS NOW: %@",port.portType);
+        }
+        for(AVAudioSessionPortDescription *port in avr.inputs) {
+            IAXLog(LOGDEBUG,@"AUDIO_INPUT IS NOW: %@",port.portType);
+        }
     }
     
     Float32 preferredBufferSize = .020; // I'd like a 20ms buffer duration
@@ -152,18 +148,28 @@ static int frameIntervalMS = 20;
         IAXLog(LOGERROR,@"setPreferredIOBufferDuration");
         setError = nil;
     }
+    
+    Float64 preferredSampleRate = [codec getRate]; // try and get the hardware to resample
+    
+    if ([session respondsToSelector:@selector(preferredSampleRate)]){
+        [session setPreferredSampleRate:preferredSampleRate error:&setError];
+        IAXLog(LOGDEBUG,@" actual HW sample rate is %f and buffer duration is %f",(float)session.sampleRate, (float)session.IOBufferDuration);
+    } else {
+        [session setPreferredHardwareSampleRate:preferredSampleRate error:&setError];
+        IAXLog(LOGDEBUG,@" actual HW sample rate is %f",(float)session.currentHardwareSampleRate);
+    }
+    if (setError){
+        IAXLog(LOGERROR,@"setPreferredSampleRateError");
+        setError = nil;
+    }
+    
+    
     // *** Activate the Audio Session before asking for the "Current" properties ***
     [session setActive:true error:&setError];
     if (setError){
         IAXLog(LOGERROR,@"setActive");
         setError = nil;
     }
-    
-    IAXLog(LOGDEBUG,@" actual HW sample rate is %f and buffer duration is %f",(float)session.sampleRate, (float)session.IOBufferDuration);
-
-    
-    
-    
 }
 
 
@@ -409,24 +415,34 @@ static OSStatus outRender(
 
 - (void) setupAudio {
     [self setUpAU];
-    [self avAudioSessionStuff ];
+    [self avAudioSessionStuff];
     [self setUpRingBuffers];
     [self setUpSendTimer];
 }
+- (void) tearDownAudio{
+    NSLog(@"Audio thread Stopping");
+    OSStatus err =0;
+    
+    //AudioOutputUnitStop(vioUnitMic);
+    err =  AudioOutputUnitStop(vioUnitSpeak);
+    if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
+
+    AudioComponentInstanceDispose(vioUnitSpeak);
+  }
 - (void)spawnAudio {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     // Do thread work here.
     if ([NSThread isMultiThreaded]){
         [NSThread setThreadPriority:1.0];
-        audioThread = [NSThread currentThread];
         NSLog(@"Audio thread Started");
     }
     audioRunLoop = [NSRunLoop currentRunLoop];
     wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
     [self setupAudio];
     [audioRunLoop run];
+    [self tearDownAudio];
     [pool release];
-    [NSThread exit];
+    //[NSThread exit];
 }
 -(void) encodeAndSend{
     
@@ -492,12 +508,10 @@ static OSStatus outRender(
 
 
 - (void) stop{
-    OSStatus err =0;
-    
-    //AudioOutputUnitStop(vioUnitMic);
-    err =  AudioOutputUnitStop(vioUnitSpeak);
-    if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
-    
+    if (!stopped){
+        [send invalidate];
+        send = nil;
+    }
     stopped = YES;
 }
 - (void) setWireConsumer:(id <AudioDataConsumer>)w {
@@ -506,9 +520,7 @@ static OSStatus outRender(
 - (void)dealloc {
     [codecs removeAllObjects];
     [codecs release];
-    [audioThread release];
-    [self stop];
-    AudioComponentInstanceDispose(vioUnitSpeak);
+    //[self stop];
     [super dealloc];
 }
 @end

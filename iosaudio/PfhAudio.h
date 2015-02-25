@@ -57,7 +57,6 @@
     char currentDigit;
     int currentDigitDuration;
     NSRunLoop* audioRunLoop;
-    NSThread *audioThread;
     NSMutableData *wout;
     NSInteger aframeLen;
     AURenderCallbackStruct inRenderProc;
