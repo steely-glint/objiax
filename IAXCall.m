@@ -662,4 +662,8 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
     NSString *dtmfs = [theTimer userInfo];
     [self sendDtmf:dtmfs];
 }
+-(void) dealloc{
+    [audio release];
+    [super dealloc];
+}
 @end

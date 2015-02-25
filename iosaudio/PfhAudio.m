@@ -120,7 +120,11 @@ static int frameIntervalMS = 20;
      object:nil];
      */
     
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&setError ];
+
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord
+             //withOptions:AVAudioSessionCategoryOptionMixWithOthers
+                   error:&setError ];
     if (setError){
         IAXLog(LOGERROR,@"setCategoryError");
         setError = nil;
@@ -171,8 +175,6 @@ static int frameIntervalMS = 20;
         setError = nil;
     }
 }
-
-
 
 - (NSArray *) listCodecs{
     return [codecs allKeys];
@@ -428,7 +430,8 @@ static OSStatus outRender(
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
 
     AudioComponentInstanceDispose(vioUnitSpeak);
-  }
+}
+
 - (void)spawnAudio {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     // Do thread work here.
@@ -520,7 +523,6 @@ static OSStatus outRender(
 - (void)dealloc {
     [codecs removeAllObjects];
     [codecs release];
-    //[self stop];
     [super dealloc];
 }
 @end
