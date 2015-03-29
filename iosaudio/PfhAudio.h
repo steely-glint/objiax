@@ -61,7 +61,6 @@
     NSInteger aframeLen;
     AURenderCallbackStruct inRenderProc;
     AURenderCallbackStruct outRenderProc;
-    
     AudioUnit vioUnitMic;
     AudioUnit vioUnitSpeak;
     

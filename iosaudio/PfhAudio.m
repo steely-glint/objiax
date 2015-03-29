@@ -72,7 +72,6 @@ static int frameIntervalMS = 20;
     currentDigitDuration = 0;
     //[self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
     //[self avAudioSessionStuff];
-
     return self;
 }
 
@@ -201,17 +200,48 @@ static int frameIntervalMS = 20;
         firstOut = NO;
         put += ((MAXJITTER * aframeLen)/frameIntervalMS) ; // in effect insert some blank frames ahead of real data
     }
-    int off = 0;
+    
+    int avail = (int) (putOut - getOut);
+    bool underflow = false;
+    bool overflow = false;
+    if (avail < 500) {
+        underflow  = true;
+    }
+    if (avail > (len - 500)){
+        overflow = true;
+    }
+    
     NSInteger samples = aframeLen;
+
+    int off = 0;
+    int flow = -1;
+    
+    if (overflow || underflow){
+        // pick a random sample to mess with in case of under or over flows
+        flow = (int) arc4random_uniform((int)samples);
+    }
     int16_t *bp =  (int16_t *) [din mutableBytes];
     double energy = 0.0;
-    for (UInt32 j=0;j< samples;j++){
+    for (int j=0;j< samples;j++){
+        if (j == flow){
+            if (underflow){
+                // duplicate this sample value
+                off = (put % len);
+                rp[off] = bp[j];
+                put++;
+            }
+            if (overflow) {
+                continue; // skip this one.
+            }
+        }
         off = (put % len);
         rp[off] = bp[j];
         put++;
         energy = energy + ABS(bp[j]);
     }
     outEnergy = energy / samples;
+    
+
     
     [din release];
     long diff = (stamp -ostamp);
@@ -223,8 +253,12 @@ static int frameIntervalMS = 20;
         NSLog(@"Missing packet ? %ld -> %ld",(long)ostamp , (long)stamp);
     }
     ostamp = stamp;
-    putOut = put;
-    // NSLog(@"put = %d get=%qd put=%qd last took = %qd avail = %qd wanted %ld",aframeLen,getOut,putOut, getOut-getOutold , putOut - getOut, wanted );
+    if (overflow && (outEnergy < 1024)){
+        NSLog(@"dumping stamp = %ld because avail = %d diff = %ld  last took = %qd  (%f)",(long)ostamp,avail, diff, getOut-getOutold , outEnergy);
+    } else {
+        putOut = put;
+        NSLog(@"stamp = %ld diff = %ld aframe = %ld get=%qd put=%qd last took = %qd avail = %d wanted %u off= %d flow = %d under=%d over=%d (%f)",(long)ostamp,diff,(long)aframeLen,getOut,putOut, getOut-getOutold , avail , (unsigned int)wanted , off ,flow, overflow, underflow, outEnergy);
+    }
     getOutold = getOut;
 }
 
@@ -320,7 +354,7 @@ static OSStatus outRender(
             //if (get > target) break;
         }
         myself ->wanted = inNumberFrames;
-        //NSLog(@" data sent to speaker %d",samples);
+        //NSLog(@" data sent to speaker %ld",(long)samples);
 
         if (inNumberFrames != (get -  myself->getOut)){
             NSLog(@" out problem with counting %u != %qd", (unsigned int)inNumberFrames , (get -  myself->getOut));
@@ -441,7 +475,8 @@ static OSStatus outRender(
     }
     audioRunLoop = [NSRunLoop currentRunLoop];
     wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
-    [self setupAudio];
+    [self setupAudio]; // really want to block main thread on this...
+    
     [audioRunLoop run];
     [self tearDownAudio];
     [pool release];
@@ -500,9 +535,13 @@ static OSStatus outRender(
 
 - (void) start{
     OSStatus err =0;
-    memset(inslop,0,sizeof(inslop));
-    memset(ringIn,0,sizeof(ringIn));
-    memset(ringOut,0,sizeof(ringOut));
+
+    if (putOut == 0){
+        // may get multiple starts - don't zero the mem if it has content..
+        memset(inslop,0,sizeof(inslop));
+        memset(ringIn,0,sizeof(ringIn));
+        memset(ringOut,0,sizeof(ringOut));
+    }
     
     err = AudioOutputUnitStart(vioUnitSpeak);
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStart Speak",(int)err);}

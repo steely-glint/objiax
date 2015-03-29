@@ -34,7 +34,7 @@
     setIAXLogLevel(LOGDEBUG);
     nsr = [[Phonefromhere alloc] init];
     call = nil;
-    [nsr setHost: @"146.148.121.175"];
+    [nsr setHost: @"192.67.4.150"];
     [nsr setPort: 4569];
     [nsr startIAX];
     [self addText: @"started \n"];
