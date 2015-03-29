@@ -70,8 +70,7 @@ static int frameIntervalMS = 20;
     playing = NO;
     muted = NO;
     currentDigitDuration = 0;
-    //[self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
-    //[self avAudioSessionStuff];
+    stopped = YES;
     return self;
 }
 
@@ -181,7 +180,7 @@ static int frameIntervalMS = 20;
 
 - (void) consumeWireData:(NSData*)data time:(NSInteger) stamp{
     if (stopped) {
-        NSLog(@"Post call audio data ignored");
+        NSLog(@"Post/pre call audio data ignored");
         return;
     }
     NSMutableData *din = [[NSMutableData alloc] initWithLength:aframeLen*2];
@@ -204,10 +203,10 @@ static int frameIntervalMS = 20;
     int avail = (int) (putOut - getOut);
     bool underflow = false;
     bool overflow = false;
-    if (avail < 500) {
+    if (avail < (aframeLen *2) ) {
         underflow  = true;
     }
-    if (avail > (len - 500)){
+    if (avail > (len - (aframeLen *3))){
         overflow = true;
     }
     
@@ -257,7 +256,7 @@ static int frameIntervalMS = 20;
         NSLog(@"dumping stamp = %ld because avail = %d diff = %ld  last took = %qd  (%f)",(long)ostamp,avail, diff, getOut-getOutold , outEnergy);
     } else {
         putOut = put;
-        NSLog(@"stamp = %ld diff = %ld aframe = %ld get=%qd put=%qd last took = %qd avail = %d wanted %u off= %d flow = %d under=%d over=%d (%f)",(long)ostamp,diff,(long)aframeLen,getOut,putOut, getOut-getOutold , avail , (unsigned int)wanted , off ,flow, overflow, underflow, outEnergy);
+        //NSLog(@"stamp = %ld diff = %ld aframe = %ld get=%qd put=%qd last took = %qd avail = %d wanted %u off= %d flow = %d under=%d over=%d (%f)",(long)ostamp,diff,(long)aframeLen,getOut,putOut, getOut-getOutold , avail , (unsigned int)wanted , off ,flow, underflow, overflow, outEnergy);
     }
     getOutold = getOut;
 }

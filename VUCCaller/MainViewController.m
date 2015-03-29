@@ -35,6 +35,8 @@
     nsr = [[Phonefromhere alloc] init];
     call = nil;
     [nsr setHost: @"192.67.4.150"];
+    //[nsr setHost: @"146.148.121.175"];
+
     [nsr setPort: 4569];
     [nsr startIAX];
     [self addText: @"started \n"];
@@ -79,7 +81,7 @@
 }
 - (IBAction)pinSend{  
     if (call != nil){
-        [call sendDtmf:@"1"];
+        [call sendDtmf:@"#"];
     }
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -147,7 +149,7 @@
                 break;     
             case kIAXCallStateUP:
                 [botBut setEnabled:YES];
-
+                
                 [botBut setTitle:@"Hangup" forState:UIControlStateNormal];
                 [botBut setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
                 break;   

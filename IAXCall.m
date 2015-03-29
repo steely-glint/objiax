@@ -138,7 +138,7 @@ uint64_t getTime () {
     return ff;
 }
 
-- (void) notifyHangup:(NSInteger)code cause:(NSString *)cause {
+- (void) notifyHangup:(NSNumber *)code cause:(NSString *)cause {
     [runner hungupCall:self cause:cause code:code ];
     [audio stop];
     [self changeState:kIAXCallStateINITIAL detail:cause];    
@@ -444,7 +444,7 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
 
 -(void) gotPCF:(IAXFrameIn *) pcf{
     IAXLog(LOGDEBUG,@"Call %ld got Protocol Control frame class %@\n",(long)srcNo,[pcf getFrameDescription]);
-    IEData * ied = [IEData alloc];
+    IEData * ied = [[IEData alloc] retain];
     [ied setRawData:[NSMutableData dataWithData:[pcf getPayload]]];
     //hexDump([pcf getPayload]);
  
@@ -464,10 +464,14 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
             break;
         case IAXProtocolControlFrameTypeREJECT:
             state = kIAXCallStateINITIAL;
-            NSString * reason = [ied getIEOfType:IAXIETypeCause];
-            NSNumber * code = [ied getIEOfType:IAXIETypeCausecode];
-            [self notifyHangup:[code integerValue] cause:reason];
+            NSString * reason = @"unknown";
+            NSNumber * code = @0;
+            if (ied != nil){
+                reason = [ied getIEOfType:IAXIETypeCause];
+                code = [ied getIEOfType:IAXIETypeCausecode];
+            }
 
+            [self notifyHangup:code cause:reason];
             break; 
         case IAXProtocolControlFrameTypeACCEPT:
         {
@@ -516,10 +520,13 @@ void logInvalidStateFrameReceived(IAXFrameIn *frame){
         case IAXProtocolControlFrameTypeHANGUP:{
             state = kIAXCallStateINITIAL;
             
-            NSString * reason = [ied getIEOfType:IAXIETypeCause];
-            NSNumber * code = [ied getIEOfType:IAXIETypeCausecode];
-            NSInteger nc = [code integerValue];
-            [self notifyHangup:nc cause:reason];
+            NSString * reason = @"unknown";
+            NSNumber * code = @0;
+            if (ied != nil){
+                reason = [ied getIEOfType:IAXIETypeCause];
+                code = [ied getIEOfType:IAXIETypeCausecode];
+            }
+            [self notifyHangup:code cause:reason];
             
         }
             break;
