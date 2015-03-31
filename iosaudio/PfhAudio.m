@@ -470,16 +470,16 @@ static OSStatus outRender(
     // Do thread work here.
     if ([NSThread isMultiThreaded]){
         [NSThread setThreadPriority:1.0];
+        audioThread = [NSThread currentThread];
         NSLog(@"Audio thread Started");
     }
     audioRunLoop = [NSRunLoop currentRunLoop];
     wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
     [self setupAudio]; // really want to block main thread on this...
-    
     [audioRunLoop run];
-    [self tearDownAudio];
+    //[self tearDownAudio];
     [pool release];
-    //[NSThread exit];
+    [NSThread exit];
 }
 -(void) encodeAndSend{
     
@@ -547,13 +547,25 @@ static OSStatus outRender(
     stopped = NO;
 }
 
+- (void)_stop{
+    IAXLog(LOGINFO,@"Stopping runloop");
+
+    CFRunLoopStop(CFRunLoopGetCurrent());
+}
 
 - (void) stop{
+    IAXLog(LOGINFO,@"Stopping (stopped = %@ )",((stopped)?@"Yes":@"NO"));
+
     if (!stopped){
+        stopped = YES;
         [send invalidate];
+        if (audioThread != nil){
+            [self performSelector:@selector(tearDownAudio) onThread:audioThread withObject:nil waitUntilDone:YES];
+            [self performSelector:@selector(_stop) onThread:audioThread withObject:nil waitUntilDone:YES];
+        }
         send = nil;
     }
-    stopped = YES;
+
 }
 - (void) setWireConsumer:(id <AudioDataConsumer>)w {
     wire = w; // this guy will take all  our data.
