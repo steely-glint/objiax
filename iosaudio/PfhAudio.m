@@ -433,8 +433,18 @@ static OSStatus outRender(
 
 
 - (void) setUpSendTimer{
-    send  = [NSTimer timerWithTimeInterval:0.02 target:self selector:@selector(encodeAndSend) userInfo:nil repeats:YES];
-    [audioRunLoop addTimer:send forMode:NSDefaultRunLoopMode];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    uint64_t interval = 19000000; //20ms
+    
+    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    if (timer)
+    {
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval ), interval , interval / 10);
+        dispatch_source_set_event_handler(timer, ^{
+            [self encodeAndSend];
+        });
+        dispatch_resume(timer);
+    }
 }
 - (void) setUpRingBuffers{
     ringInsz = ENOUGH;
@@ -449,8 +459,17 @@ static OSStatus outRender(
 }
 
 - (void) setupAudio {
-    [self setUpAU];
+    NSLog(@"Starting Audio session setup");
+    
     [self avAudioSessionStuff];
+    
+    NSLog(@"Starting Audio Unit setup");
+
+    [self setUpAU];
+
+    
+    NSLog(@"Finished Audio session setup");
+
     [self setUpRingBuffers];
     [self setUpSendTimer];
 }
@@ -463,8 +482,20 @@ static OSStatus outRender(
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStop Speak",(int)err);}
 
     AudioComponentInstanceDispose(vioUnitSpeak);
+    if (timer){
+        dispatch_source_cancel(timer);
+        NSLog(@"stopping mic timer ");
+        // Remove this if you are on a Deployment Target of iOS6 or OSX 10.8 and above
+        //dispatch_release(timer);
+        timer = nil;
+    }
 }
+- (void)spawnAudio {
+    wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
+    [self setupAudio]; // really want to block main thread on this...
 
+}
+/*
 - (void)spawnAudio {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     // Do thread work here.
@@ -481,18 +512,20 @@ static OSStatus outRender(
     [pool release];
     [NSThread exit];
 }
+*/
 -(void) encodeAndSend{
     
     if (stopped) return;
     
     int64_t get = getIn;
     int64_t avail  = putIn - get;
-    //NSLog(@"avail = %qd",avail);
-    //int64_t count = 0;
+    NSLog(@"mic avail = %qd",avail);
+    int64_t count = 0;
+    // note that this was a while() but - we really don't want to spew packets back-to-back.
     if (avail >= aframeLen) {
         // got enough to send a packet
-        //NSLog(@"taken = %d get=%qd put=%qd count=%qd",aframeLen,getIn,putIn,count );
-        //count++;
+        NSLog(@"mic taken = %d get=%qd put=%qd count=%qd",aframeLen,getIn,putIn,count );
+        count++;
         
         NSData * dts = nil ;
         if (muted) {
@@ -525,7 +558,8 @@ static OSStatus outRender(
     codec = [codecs objectForKey:codecname];
     if (codec != nil){
         aframeLen = (frameIntervalMS * [codec getRate] )/1000;
-        [self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
+        [self spawnAudio];
+        //[self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
     }
     IAXLog(LOGINFO,@"set codec to %@ - res = %@",codecname,((codec != nil)?@"Yes":@"NO"));
     return (codec != nil);
@@ -546,23 +580,25 @@ static OSStatus outRender(
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStart Speak",(int)err);}
     stopped = NO;
 }
-
+/*
 - (void)_stop{
     IAXLog(LOGINFO,@"Stopping runloop");
 
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
-
+*/
 - (void) stop{
     IAXLog(LOGINFO,@"Stopping (stopped = %@ )",((stopped)?@"Yes":@"NO"));
 
     if (!stopped){
         stopped = YES;
         [send invalidate];
+        [self tearDownAudio];
+        /*
         if (audioThread != nil){
             [self performSelector:@selector(tearDownAudio) onThread:audioThread withObject:nil waitUntilDone:YES];
             [self performSelector:@selector(_stop) onThread:audioThread withObject:nil waitUntilDone:YES];
-        }
+        }*/
         send = nil;
     }
 

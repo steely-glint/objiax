@@ -56,8 +56,8 @@
     BOOL muted;
     char currentDigit;
     int currentDigitDuration;
-    NSRunLoop* audioRunLoop;
-    NSThread* audioThread;
+    /*NSRunLoop* audioRunLoop;
+    NSThread* audioThread;*/
     NSMutableData *wout;
     NSInteger aframeLen;
     AURenderCallbackStruct inRenderProc;
@@ -86,6 +86,7 @@
     BOOL stopped;
     double outEnergy;
     double inEnergy;
+    dispatch_source_t timer;
 
 }
 

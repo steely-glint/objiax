@@ -52,6 +52,7 @@
 		223A224E13815306000B2166 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A224D13815306000B2166 /* CoreAudio.framework */; };
 		223A862413952DEE002E4E90 /* libPfhObjIAX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E64EE013952D4700196D29 /* libPfhObjIAX.a */; };
 		22400AA519D2D2370091464D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22400AA419D2D2370091464D /* AVFoundation.framework */; };
+		2248FF3D1BDA55A5004DC8E8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2248FF3C1BDA55A5004DC8E8 /* Default-568h@2x.png */; };
 		22A65E01137ED1F600FB4644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		22A65E09137ED25D00FB4644 /* AudioDataConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E08137ED25D00FB4644 /* AudioDataConsumer.h */; };
 		22A65E60137ED67C00FB4644 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A65E0C137ED67C00FB4644 /* _kiss_fft_guts.h */; };
@@ -246,6 +247,7 @@
 		223E2C50137AFF3600A983F3 /* ProtocolTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtocolTestTests.h; sourceTree = "<group>"; };
 		223E2C52137AFF3600A983F3 /* ProtocolTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProtocolTestTests.m; sourceTree = "<group>"; };
 		22400AA419D2D2370091464D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2248FF3C1BDA55A5004DC8E8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2257CDCA115E508400E030A5 /* IEData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEData.h; sourceTree = "<group>"; };
 		2257CDCB115E508400E030A5 /* IEData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IEData.m; sourceTree = "<group>"; };
 		228AECED13951A92008FCE71 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -408,6 +410,7 @@
 		0867D691FE84028FC02AAC07 /* objiax */ = {
 			isa = PBXGroup;
 			children = (
+				2248FF3C1BDA55A5004DC8E8 /* Default-568h@2x.png */,
 				22E64EE013952D4700196D29 /* libPfhObjIAX.a */,
 				22A65E00137ED1F600FB4644 /* libiosaudio.a */,
 				22E11616139521B30094E9AE /* CoreFoundation.framework */,
@@ -879,7 +882,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				TargetAttributes = {
 					221BEDD8137B072F00AFB367 = {
 						DevelopmentTeam = NV2YE3RNDS;
@@ -919,6 +922,7 @@
 				221BEDF1137B073000AFB367 /* MainView.xib in Resources */,
 				221BEDF6137B073000AFB367 /* FlipsideView.xib in Resources */,
 				22D0ED8A13991E4000630019 /* MainWindow-iPad.xib in Resources */,
+				2248FF3D1BDA55A5004DC8E8 /* Default-568h@2x.png in Resources */,
 				22D0ED8C1399217F00630019 /* MainView-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,6 +1073,7 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = HAVE_CONFIG_H;
@@ -1076,7 +1081,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = iosaudio/libspeex;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -1111,7 +1116,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "VUCCaller/VUCCaller-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.westhawk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1132,8 +1138,9 @@
 				GCC_PREFIX_HEADER = "VUCCaller/VUCCaller-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "VUCCaller/VUCCaller-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.westhawk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
