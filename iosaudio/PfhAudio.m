@@ -492,40 +492,23 @@ static OSStatus outRender(
 }
 - (void)spawnAudio {
     wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
-    [self setupAudio]; // really want to block main thread on this...
+    [self setupAudio]; // do we really want to block main thread on this...
 
 }
-/*
-- (void)spawnAudio {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    // Do thread work here.
-    if ([NSThread isMultiThreaded]){
-        [NSThread setThreadPriority:1.0];
-        audioThread = [NSThread currentThread];
-        NSLog(@"Audio thread Started");
-    }
-    audioRunLoop = [NSRunLoop currentRunLoop];
-    wout = [[NSMutableData  alloc] initWithCapacity:160]; // we put the wire data here before sending it.
-    [self setupAudio]; // really want to block main thread on this...
-    [audioRunLoop run];
-    //[self tearDownAudio];
-    [pool release];
-    [NSThread exit];
-}
-*/
+
 -(void) encodeAndSend{
     
     if (stopped) return;
     
     int64_t get = getIn;
     int64_t avail  = putIn - get;
-    NSLog(@"mic avail = %qd",avail);
-    int64_t count = 0;
+    //NSLog(@"mic avail = %qd",avail);
+    //int64_t count = 0;
     // note that this was a while() but - we really don't want to spew packets back-to-back.
     if (avail >= aframeLen) {
         // got enough to send a packet
-        NSLog(@"mic taken = %d get=%qd put=%qd count=%qd",aframeLen,getIn,putIn,count );
-        count++;
+        //NSLog(@"mic taken = %d get=%qd put=%qd count=%qd",aframeLen,getIn,putIn,count );
+        //count++;
         
         NSData * dts = nil ;
         if (muted) {
@@ -559,7 +542,6 @@ static OSStatus outRender(
     if (codec != nil){
         aframeLen = (frameIntervalMS * [codec getRate] )/1000;
         [self spawnAudio];
-        //[self performSelectorInBackground:@selector(spawnAudio) withObject:nil];
     }
     IAXLog(LOGINFO,@"set codec to %@ - res = %@",codecname,((codec != nil)?@"Yes":@"NO"));
     return (codec != nil);
@@ -580,13 +562,7 @@ static OSStatus outRender(
     if (err != 0) { NSLog(@"Error with %@ - %d",@"AudioOutputUnitStart Speak",(int)err);}
     stopped = NO;
 }
-/*
-- (void)_stop{
-    IAXLog(LOGINFO,@"Stopping runloop");
 
-    CFRunLoopStop(CFRunLoopGetCurrent());
-}
-*/
 - (void) stop{
     IAXLog(LOGINFO,@"Stopping (stopped = %@ )",((stopped)?@"Yes":@"NO"));
 
@@ -594,11 +570,6 @@ static OSStatus outRender(
         stopped = YES;
         [send invalidate];
         [self tearDownAudio];
-        /*
-        if (audioThread != nil){
-            [self performSelector:@selector(tearDownAudio) onThread:audioThread withObject:nil waitUntilDone:YES];
-            [self performSelector:@selector(_stop) onThread:audioThread withObject:nil waitUntilDone:YES];
-        }*/
         send = nil;
     }
 

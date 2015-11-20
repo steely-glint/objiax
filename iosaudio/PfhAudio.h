@@ -56,8 +56,6 @@
     BOOL muted;
     char currentDigit;
     int currentDigitDuration;
-    /*NSRunLoop* audioRunLoop;
-    NSThread* audioThread;*/
     NSMutableData *wout;
     NSInteger aframeLen;
     AURenderCallbackStruct inRenderProc;
@@ -65,14 +63,12 @@
     AudioUnit vioUnitMic;
     AudioUnit vioUnitSpeak;
     
-    //   NSMutableData *ringInD;
     int16_t inslop[ENOUGH];
     int16_t ringIn[ENOUGH];
     NSInteger ringInsz;
     int64_t putIn;
     int64_t getIn;
     
-    //    NSMutableData *ringOutD;
     int16_t  ringOut[ENOUGH];
     NSInteger ringOutsz;
     int64_t putOut;
